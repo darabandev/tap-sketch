@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .drawing_like import Drawing_Like
 
 
 class User(db.Model, UserMixin):
@@ -11,6 +12,11 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_img = db.Column(db.Text)
+
+    comments = db.relationship("Comment", back_populates="user")
+    follows = db.relationship("Follow", back_populates="user")
+    drawings = db.relationship(
+        "Drawing", secondary=Drawing_Like, back_populates="user")
 
     @property
     def password(self):

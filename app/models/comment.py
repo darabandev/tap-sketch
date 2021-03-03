@@ -1,5 +1,5 @@
 from .db import db
-# comment
+import datetime
 
 
 class Comment(db.Model):
@@ -10,7 +10,8 @@ class Comment(db.Model):
     drawing_id = db.Column(db.Integer, db.ForeignKey(
         "drawings.id"), nullable=False,)
     comment = db.Column(db.String(300), nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False,
+                           default=datetime.datetime.utcnow)
 
     user = db.relationship("User", back_populates="comments")
     drawing = db.relationship("Drawing", back_populates="comments")
