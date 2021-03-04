@@ -18,3 +18,10 @@ def new_drawing():
     db.session.commit()
 
     return drawing.to_dict()
+
+
+@drawing_routes.route("/:id")
+def get_one_drawing(id):
+    drawing = Drawing.query.get(id)
+
+    return drawing.to_dict()

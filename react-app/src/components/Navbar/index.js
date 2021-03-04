@@ -1,10 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import img from "./cropped.png";
 import "./Navbar.css";
 
 const Navbar = ({ setAuthenticated, authenticated }) => {
+  const userName = useSelector(state => state.session.user.username);
+
   return (
     <nav className="navbar">
       <li>
@@ -14,6 +17,11 @@ const Navbar = ({ setAuthenticated, authenticated }) => {
       </li>
       {authenticated ? (
         <>
+          <li>
+            <NavLink to={`/profile/${userName}`} exact={true} activeClassName="active">
+              My Profile
+            </NavLink>
+          </li>
           <li>
             <NavLink to="/create" exact={true} activeClassName="active">
               Create

@@ -73,7 +73,7 @@ const Canvas = () => {
       <Sketch setup={setup} draw={draw} mousePressed={mousePressed} windowResized={windowResized} />
       <div className="canvas-upload-tools">
         <input type="text" value={caption} onChange={e => setCaption(e.target.value)} />
-        <button onClick={handleSave}>hi</button>
+        <button onClick={handleSave}>Save</button>
       </div>
     </>
   );
