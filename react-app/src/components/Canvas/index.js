@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Sketch from "react-p5";
 
 const Canvas = () => {
+  const [lineColor, setLineColor] = useState("#000");
   const paths = [];
   let currentPath = [];
   let weight = 10;
@@ -17,7 +18,7 @@ const Canvas = () => {
       const point = {
         x: p5.mouseX,
         y: p5.mouseY,
-        color: "#55ee00",
+        color: lineColor,
         weight: weight,
       };
       currentPath.push(point);
@@ -39,39 +40,13 @@ const Canvas = () => {
     paths.push(currentPath);
   }
 
-  //   const setup = (p5, canvasParentRef) => {
-  //     p5.createCanvas(500, 400).parent(canvasParentRef);
-  //     p5.strokeWeight(weight);
-  //     p5.stroke(0);
-  //   };
-
-  //   const draw = p5 => {
-  //     p5.background(255, 130, 20);
-  //     p5.ellipse(100, 100, 100);
-  //     p5.ellipse(300, 100, 100);
-  //   };
-
-  //   const touchMoved = p5 => {
-  //     p5.line(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY);
-  //     return false;
-  //   };
-
-  const mouseDragged = p5 => {
-    p5.line(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY);
-    return false;
-  };
-
-  const keyTyped = (key, p5) => {
-    console.log(key, p5);
-  };
-
   const handleWeight = () => {
     weight = 3;
   };
 
   return (
     <>
-      <button onClick={handleWeight}>hi</button>
+      <input type="color" onChange={e => setLineColor(e.target.value)} value={lineColor} />
       <Sketch setup={setup} draw={draw} mousePressed={mousePressed} />
     </>
   );
