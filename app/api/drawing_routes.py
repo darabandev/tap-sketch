@@ -20,7 +20,7 @@ def new_drawing():
     return drawing.to_dict()
 
 
-@drawing_routes.route("/:id")
+@drawing_routes.route("/<int:id>")
 def get_one_drawing(id):
     drawing = Drawing.query.get(id)
 

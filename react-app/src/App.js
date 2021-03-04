@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import CreatePageContainer from "./components/CreatePageContainer";
+import DrawingPageContainer from "./components/DrawingPageContainer";
 import { authenticate } from "./services/auth";
 
 function App() {
@@ -46,6 +47,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path="/drawings/:drawingId" exact={true} authenticated={authenticated}>
+          <DrawingPageContainer />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>
