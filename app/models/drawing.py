@@ -17,3 +17,12 @@ class Drawing(db.Model):
     comments = db.relationship("Comment", back_populates="drawing")
     user = db.relationship("User", secondary=Drawing_Like,
                            back_populates="drawings")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "caption": self.caption,
+            "data_uri": self.data_uri,
+            "created_at": self.created_at
+        }
