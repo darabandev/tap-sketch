@@ -9,8 +9,10 @@ class Drawing(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False,)
+    username = db.Column(db.String, db.ForeignKey(
+        "users.username"), nullable=False)
     caption = db.Column(db.String(200), nullable=False)
-    data_uri = db.Column(db.Text, nullable=False)
+    data_url = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.datetime.utcnow)
 
@@ -22,7 +24,8 @@ class Drawing(db.Model):
         return {
             "id": self.id,
             "user_id": self.user_id,
+            "username": self.username,
             "caption": self.caption,
-            "data_uri": self.data_uri,
+            "data_url": self.data_url,
             "created_at": self.created_at
         }

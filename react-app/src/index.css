@@ -10,13 +10,22 @@ canvas {
 
 .main {
   height: calc(100vh - 4.1em);
+  max-width: 1000px;
+  margin: 0 auto;
   overflow-x: hidden;
   overflow-y: scroll;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 }
 
-@media screen and (max-width: 982px) {
-  canvas {
-    width: 100vw;
-    height: auto;
-  }
+.main::-webkit-scrollbar {
+  width: 10px;
+}
+
+.main::-webkit-scrollbar-thumb {
+  background-color: #ffa500;
+}
+
+.main::-webkit-scrollbar-thumb:hover {
+  background-color: #c4881b;
 }

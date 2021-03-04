@@ -5,7 +5,7 @@ import { createNewDrawing } from "../../store/drawings";
 
 const Canvas = () => {
   const dispatch = useDispatch();
-  const userId = useSelector(state => state.session.user.id);
+  const { username, id } = useSelector(state => state.session.user);
   const [lineColor, setLineColor] = useState("#000000");
   const [lineWeight, setLineWeight] = useState(10);
   const [caption, setCaption] = useState("");
@@ -51,9 +51,9 @@ const Canvas = () => {
 
   const handleSave = () => {
     const canvas = document.querySelector("canvas");
-    const dataUri = canvas.toDataURL();
+    const dataUrl = canvas.toDataURL();
 
-    dispatch(createNewDrawing({ userId, caption, dataUri }));
+    dispatch(createNewDrawing({ id, username, caption, dataUrl }));
   };
 
   const windowResized = p5 => {

@@ -10,8 +10,9 @@ def new_drawing():
 
     drawing = Drawing(
         user_id=drawing_obj["user_id"],
+        username=drawing_obj["username"],
         caption=drawing_obj["caption"],
-        data_uri=drawing_obj["data_uri"]
+        data_url=drawing_obj["data_url"]
     )
 
     db.session.add(drawing)

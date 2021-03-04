@@ -16,7 +16,7 @@ export const getDrawing = drawing => {
 };
 
 export const createNewDrawing = drawing => async dispatch => {
-  const { userId, caption, dataUri } = drawing;
+  const { id, caption, dataUrl, username } = drawing;
 
   const res = await fetch(`/api/drawings/new`, {
     method: "POST",
@@ -24,9 +24,10 @@ export const createNewDrawing = drawing => async dispatch => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      user_id: userId,
+      user_id: id,
       caption,
-      data_uri: dataUri,
+      username,
+      data_url: dataUrl,
     }),
   });
 
