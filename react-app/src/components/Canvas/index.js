@@ -6,14 +6,18 @@ import { createNewDrawing } from "../../store/drawings";
 const Canvas = () => {
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id);
-  const [lineColor, setLineColor] = useState("#000");
+  const [lineColor, setLineColor] = useState("#000000");
   const [lineWeight, setLineWeight] = useState(10);
   const [caption, setCaption] = useState("");
   const paths = [];
   let currentPath = [];
 
   const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(500, 500).parent(canvasParentRef);
+    if (window.innerWidth <= 1000) {
+      p5.createCanvas(window.innerWidth, window.innerWidth).parent(canvasParentRef);
+    } else {
+      p5.createCanvas(600, 600).parent(canvasParentRef);
+    }
   };
 
   const draw = p5 => {
@@ -52,12 +56,25 @@ const Canvas = () => {
     dispatch(createNewDrawing({ userId, caption, dataUri }));
   };
 
+  const windowResized = p5 => {
+    if (p5.windowWidth < 1000) {
+      p5.resizeCanvas(window.innerWidth, window.innerWidth);
+    } else {
+      p5.resizeCanvas(600, 600);
+    }
+  };
+
   return (
     <>
-      <input type="color" onChange={e => setLineColor(e.target.value)} value={lineColor} />
-      <button onClick={handleSave}>hi</button>
-      <Sketch setup={setup} draw={draw} mousePressed={mousePressed} />
-      <input type="text" value={caption} onChange={e => setCaption(e.target.value)} />
+      <div className="canvas-draw-tools">
+        <input type="color" onChange={e => setLineColor(e.target.value)} value={lineColor} />
+        <input type="range" min="1" max="20" value={lineWeight} onChange={e => setLineWeight(e.target.value)} />
+      </div>
+      <Sketch setup={setup} draw={draw} mousePressed={mousePressed} windowResized={windowResized} />
+      <div className="canvas-upload-tools">
+        <input type="text" value={caption} onChange={e => setCaption(e.target.value)} />
+        <button onClick={handleSave}>hi</button>
+      </div>
     </>
   );
 };

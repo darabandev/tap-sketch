@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar/index";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import Canvas from "./components/Canvas";
+import CreatePageContainer from "./components/CreatePageContainer";
 import { authenticate } from "./services/auth";
 
 function App() {
@@ -51,7 +51,7 @@ function App() {
           <h1>My Home Page</h1>
         </ProtectedRoute>
         <ProtectedRoute path="/create" exact={true} authenticated={authenticated}>
-          <Canvas />
+          <CreatePageContainer />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

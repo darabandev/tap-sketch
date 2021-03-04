@@ -7,3 +7,16 @@
 canvas {
   border: 1px solid black;
 }
+
+.main {
+  height: calc(100vh - 4.1em);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 982px) {
+  canvas {
+    width: 100vw;
+    height: auto;
+  }
+}
