@@ -1,0 +1,19 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  align-items: center;
+  height: 4em;
+}
+
+.navbar li {
+  list-style-type: none;
+}
+
+.navbar img {
+  max-height: 100%;
+}
+
+.navbar a {
+  overflow: hidden;
+}
