@@ -1,16 +1,19 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Sketch from "react-p5";
+import { createNewDrawing } from "../../store/drawings";
 
 const Canvas = () => {
+  const dispatch = useDispatch();
+  const userId = useSelector(state => state.session.user.id);
   const [lineColor, setLineColor] = useState("#000");
   const [lineWeight, setLineWeight] = useState(10);
+  const [caption, setCaption] = useState("");
   const paths = [];
   let currentPath = [];
-  let myBall;
 
   const setup = (p5, canvasParentRef) => {
     p5.createCanvas(500, 500).parent(canvasParentRef);
-    myBall = p5.background;
   };
 
   const draw = p5 => {
@@ -44,9 +47,9 @@ const Canvas = () => {
 
   const handleSave = () => {
     const canvas = document.querySelector("canvas");
-    const dataUrl = canvas.toDataURL();
+    const dataUri = canvas.toDataURL();
 
-    console.log(dataUrl);
+    dispatch(createNewDrawing({ userId, caption, dataUri }));
   };
 
   return (
@@ -54,6 +57,7 @@ const Canvas = () => {
       <input type="color" onChange={e => setLineColor(e.target.value)} value={lineColor} />
       <button onClick={handleSave}>hi</button>
       <Sketch setup={setup} draw={draw} mousePressed={mousePressed} />
+      <input type="text" value={caption} onChange={e => setCaption(e.target.value)} />
     </>
   );
 };

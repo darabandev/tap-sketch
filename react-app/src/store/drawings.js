@@ -10,7 +10,7 @@ export const newDrawing = drawing => {
 export const createNewDrawing = drawing => async dispatch => {
   const { userId, caption, dataUri } = drawing;
 
-  const res = await fetch(`/api/drawings/create`, {
+  const res = await fetch(`/api/drawings/new`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

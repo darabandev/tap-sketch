@@ -11,7 +11,7 @@ def new_drawing():
     drawing = Drawing(
         user_id=drawing_obj["user_id"],
         caption=drawing_obj["caption"],
-        data_url=drawing_obj["data_uri"]
+        data_uri=drawing_obj["data_uri"]
     )
 
     db.session.add(drawing)
