@@ -1,0 +1,14 @@
+.drawing-img {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.drawing-username {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1000px) {
+  .drawing-img {
+    width: 100%;
+  }
+}

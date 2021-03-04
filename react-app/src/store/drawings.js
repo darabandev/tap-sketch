@@ -1,5 +1,6 @@
 const NEW_DRAWING = "drawings/NEW_DRAWING";
 const GET_ONE_DRAWING = "drawings/GET_ONE_DRAWING";
+const GET_USER_DRAWINGS = "drawings/GET_USER_DRAWINGS";
 
 export const newDrawing = drawing => {
   return {
@@ -12,6 +13,13 @@ export const getDrawing = drawing => {
   return {
     type: GET_ONE_DRAWING,
     payload: drawing,
+  };
+};
+
+export const getUserDrawings = drawings => {
+  return {
+    type: GET_USER_DRAWINGS,
+    payload: drawings,
   };
 };
 
@@ -44,7 +52,14 @@ export const getOneDrawing = drawingId => async dispatch => {
   dispatch(getDrawing(data));
 };
 
-const initialState = { currentDrawing: null, allDrawings: null };
+export const getAllDrawingsForUser = username => async dispatch => {
+  const res = await fetch(`/api/drawings/user/${username}`);
+  const data = await res.json();
+
+  dispatch(getUserDrawings(data));
+};
+
+const initialState = { currentDrawing: null, userDrawings: null, userViewing: null };
 
 export default function sessionReducer(state = initialState, action) {
   const updateState = { ...state };
@@ -54,6 +69,9 @@ export default function sessionReducer(state = initialState, action) {
       return updateState;
     case GET_ONE_DRAWING:
       updateState.currentDrawing = action.payload;
+      return updateState;
+    case GET_ONE_DRAWING:
+      updateState.userDrawings = action.payload;
       return updateState;
     default:
       return state;
