@@ -3,6 +3,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .drawing_like import Drawing_Like
 
+follows = db.Table(
+    "follows",
+    db.Column("user_following", db.Integer, db.ForeignKey("users.id")),
+    db.Column("user_being_followed", db.Integer, db.ForeignKey("users.id"))
+)
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -14,9 +20,17 @@ class User(db.Model, UserMixin):
     profile_img = db.Column(db.Text)
 
     comments = db.relationship("Comment", back_populates="user")
-    follows = db.relationship("Follow", back_populates="user")
     drawings = db.relationship(
         "Drawing", secondary=Drawing_Like, back_populates="user")
+
+    followers = db.relationship(
+        "User",
+        secondary=follows,
+        primaryjoin=(follows.c.user_following == id),
+        secondaryjoin=(follows.c.user_being_followed == id),
+        backref=db.backref("follows", lazy="dynamic"),
+        lazy="dynamic"
+    )
 
     @property
     def password(self):
