@@ -37,11 +37,10 @@ const Canvas = () => {
     });
   };
 
-  function mousePressed(p5) {
+  const mousePressed = () => {
     currentPath = [];
     paths.push(currentPath);
-    console.log(p5);
-  }
+  };
 
   const handleSave = () => {
     const canvas = document.querySelector("canvas");
