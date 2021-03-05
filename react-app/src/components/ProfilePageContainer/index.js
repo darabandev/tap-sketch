@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getAllDrawingsForUser } from "../../store/drawings";
 import { getOneUser } from "../../store/users";
 import ProfileGallery from "../ProfileGallery";
+import ProfileUserInfo from "../ProfileUserInfo";
 import "./ProfilePageContainer.css";
 
 const ProfilePageContainer = () => {
@@ -21,7 +22,7 @@ const ProfilePageContainer = () => {
 
   return (
     <div className="main">
-      <h1>{user.username}</h1>
+      <ProfileUserInfo user={user} drawings={drawings} />
       <ProfileGallery drawings={drawings} />
     </div>
   );
