@@ -40,6 +40,8 @@ const dateConverter = date => {
     case "12":
       month = "December";
       break;
+    default:
+      break;
   }
 
   if (day.charAt(0) === "0") day = day.substring(1);

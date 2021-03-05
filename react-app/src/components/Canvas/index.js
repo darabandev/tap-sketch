@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import Sketch from "react-p5";
 import { createNewDrawing } from "../../store/drawings";
 
 const Canvas = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { username, id } = useSelector(state => state.session.user);
   const [lineColor, setLineColor] = useState("#000000");
   const [lineWeight, setLineWeight] = useState(10);
@@ -54,6 +56,7 @@ const Canvas = () => {
     const dataUrl = canvas.toDataURL();
 
     dispatch(createNewDrawing({ id, username, caption, dataUrl }));
+    history.push(`/profile/${username}`);
   };
 
   const windowResized = p5 => {
