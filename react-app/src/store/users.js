@@ -7,8 +7,8 @@ export const getUser = user => {
   };
 };
 
-export const getOneUser = userId => async dispatch => {
-  const res = await fetch(`/api/users/${userId}`);
+export const getOneUser = username => async dispatch => {
+  const res = await fetch(`/api/users/username/${username}`);
 
   const data = await res.json();
   dispatch(getUser(data));

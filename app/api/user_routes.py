@@ -17,3 +17,9 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route("/username/<username>", endpoint="get_user")
+def user(username):
+    user = User.query.filter(User.username == username).one()
+    return user.to_dict()

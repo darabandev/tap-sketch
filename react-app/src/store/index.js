@@ -2,11 +2,13 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import drawingReducer from "./drawings";
+import otherUserReducer from "./users";
 
 const appReducer = combineReducers({
   // add individual reducer key-value pairs here.
   session: sessionReducer,
   drawings: drawingReducer,
+  otherUsers: otherUserReducer,
 });
 
 const rootReducer = (state, action) => {
