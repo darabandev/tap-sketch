@@ -1,18 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Sketch from "react-p5";
 import { createNewDrawing } from "../../store/drawings";
+import "./Canvas.css";
 
 const Canvas = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { username, id } = useSelector(state => state.session.user);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
   const [lineColor, setLineColor] = useState("#000000");
   const [lineWeight, setLineWeight] = useState(10);
   const [caption, setCaption] = useState("");
   const paths = [];
   let currentPath = [];
+
+  useEffect(() => {
+    if (caption.length >= 1 && caption.length <= 200) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [caption]);
 
   const setup = (p5, canvasParentRef) => {
     if (window.innerWidth <= 1000) {
@@ -67,18 +77,31 @@ const Canvas = () => {
     }
   };
 
+  const keyTyped = p5 => {
+    if (p5.key === "a") {
+      paths.pop();
+    }
+  };
+
   return (
-    <>
+    <div className="canvas-tools-container">
       <div className="canvas-draw-tools">
         <input type="color" onChange={e => setLineColor(e.target.value)} value={lineColor} />
-        <input type="range" min="1" max="20" value={lineWeight} onChange={e => setLineWeight(e.target.value)} />
+        <input type="range" min="1" max="30" value={lineWeight} onChange={e => setLineWeight(e.target.value)} />
       </div>
-      <Sketch setup={setup} draw={draw} mousePressed={mousePressed} windowResized={windowResized} />
+      <Sketch setup={setup} draw={draw} mousePressed={mousePressed} windowResized={windowResized} keyTyped={keyTyped} />
       <div className="canvas-upload-tools">
-        <input type="text" value={caption} onChange={e => setCaption(e.target.value)} />
-        <button onClick={handleSave}>Save</button>
+        <textarea
+          type="text"
+          value={caption}
+          onChange={e => setCaption(e.target.value)}
+          placeholder="Please enter a caption."
+        ></textarea>
+        <button onClick={handleSave} disabled={buttonDisabled}>
+          POST
+        </button>
       </div>
-    </>
+    </div>
   );
 };
 
