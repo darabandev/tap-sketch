@@ -70,7 +70,7 @@ export default function sessionReducer(state = initialState, action) {
     case GET_ONE_DRAWING:
       updateState.currentDrawing = action.payload;
       return updateState;
-    case GET_ONE_DRAWING:
+    case GET_USER_DRAWINGS:
       updateState.userDrawings = action.payload;
       return updateState;
     default:

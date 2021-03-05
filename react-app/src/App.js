@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import User from "./components/User";
 import { setUser } from "./store/session";
+import { useDispatch } from "react-redux";
+import Navbar from "./components/Navbar/index";
+import UsersList from "./components/UsersList";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
-import Navbar from "./components/Navbar/index";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
-import CreatePageContainer from "./components/CreatePageContainer";
 import DrawingPageContainer from "./components/DrawingPageContainer";
+import ProfilePageContainer from "./components/ProfilePageContainer";
+import CreatePageContainer from "./components/CreatePageContainer";
 import { authenticate } from "./services/auth";
 
 function App() {
@@ -50,6 +51,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/drawings/:drawingId" exact={true} authenticated={authenticated}>
           <DrawingPageContainer />
+        </ProtectedRoute>
+        <ProtectedRoute path="/profile/:username" exact={true} authenticated={authenticated}>
+          <ProfilePageContainer />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>

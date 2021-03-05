@@ -35,4 +35,4 @@ def user(username):
     drawings = Drawing.query.filter(Drawing.user_id == user.id).all()
     data = [drawing.to_dict() for drawing in drawings]
 
-    return json.dumps(data)
+    return json.dumps(data, default=str)
