@@ -9,6 +9,7 @@ const DrawingView = ({ drawing }) => {
         <span className="drawing-username">{drawing.username}</span>
         <span className="drawing-caption"> {drawing.caption}</span>
       </p>
+      <p>{drawing.created_at}</p>
     </div>
   );
 };
