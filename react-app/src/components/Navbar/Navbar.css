@@ -1,9 +1,10 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
   align-items: center;
   height: 4em;
+  background-color: white;
 }
 
 .navbar li {

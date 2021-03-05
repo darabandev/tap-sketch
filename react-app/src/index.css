@@ -6,6 +6,12 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+#root {
+  background: rgb(255, 119, 0);
+  background: linear-gradient(135deg, rgba(255, 119, 0, 1) 19%, rgba(49, 203, 37, 1) 100%);
+  height: calc(100vh);
+}
+
 canvas {
   border: 1px solid black;
 }
@@ -15,9 +21,9 @@ canvas {
   max-width: 1000px;
   margin: 0 auto;
   overflow-x: hidden;
-  overflow-y: scroll;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  overflow-y: auto;
+  padding: 1em;
+  background-color: white;
 }
 
 .main::-webkit-scrollbar {

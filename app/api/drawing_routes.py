@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from app.models import User, Drawing, db
 import json
+from sqlalchemy import desc
 
 drawing_routes = Blueprint("drawings", __name__)
 
@@ -32,7 +33,8 @@ def get_one_drawing(id):
 @drawing_routes.route("/user/<username>")
 def user(username):
     user = User.query.filter(User.username == username).one()
-    drawings = Drawing.query.filter(Drawing.user_id == user.id).all()
+    drawings = Drawing.query.filter(Drawing.user_id == user.id).order_by(
+        desc(Drawing.created_at)).all()
     data = [drawing.to_dict() for drawing in drawings]
 
     return json.dumps(data, default=str)

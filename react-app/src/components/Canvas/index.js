@@ -86,8 +86,14 @@ const Canvas = () => {
   return (
     <div className="canvas-tools-container">
       <div className="canvas-draw-tools">
-        <input type="color" onChange={e => setLineColor(e.target.value)} value={lineColor} />
-        <input type="range" min="1" max="30" value={lineWeight} onChange={e => setLineWeight(e.target.value)} />
+        <div>
+          <input type="color" onChange={e => setLineColor(e.target.value)} value={lineColor} />
+          <p>Color</p>
+        </div>
+        <div>
+          <input type="range" min="1" max="100" value={lineWeight} onChange={e => setLineWeight(e.target.value)} />
+          <p>Thickness</p>
+        </div>
       </div>
       <Sketch setup={setup} draw={draw} mousePressed={mousePressed} windowResized={windowResized} keyTyped={keyTyped} />
       <div className="canvas-upload-tools">

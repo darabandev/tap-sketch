@@ -2,6 +2,21 @@
   max-width: 600px;
 }
 
+.canvas-draw-tools {
+  display: flex;
+}
+
+.canvas-draw-tools div {
+  flex-grow: 1;
+  height: 3em;
+  margin: 0.5em 1em;
+  text-align: center;
+}
+
+.canvas-draw-tools div input {
+  width: 100%;
+}
+
 .canvas-upload-tools {
   display: flex;
   justify-content: space-between;
