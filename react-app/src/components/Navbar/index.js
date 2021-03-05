@@ -6,7 +6,7 @@ import img from "./cropped.png";
 import "./Navbar.css";
 
 const Navbar = ({ setAuthenticated, authenticated }) => {
-  const userName = useSelector(state => state.session.user.username);
+  const user = useSelector(state => state.session.user);
 
   return (
     <nav className="navbar">
@@ -18,7 +18,7 @@ const Navbar = ({ setAuthenticated, authenticated }) => {
       {authenticated ? (
         <>
           <li>
-            <NavLink to={`/profile/${userName}`} exact={true} activeClassName="active">
+            <NavLink to={user && `/profile/${user.username}`} exact={true} activeClassName="active">
               My Profile
             </NavLink>
           </li>

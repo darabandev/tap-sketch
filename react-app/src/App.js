@@ -20,9 +20,9 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const user = await authenticate();
-      if (!user.errors) {
-        dispatch(setUser(user));
+      const sessionUser = await authenticate();
+      if (!sessionUser.errors) {
+        dispatch(setUser(sessionUser));
         setAuthenticated(true);
       }
       setLoaded(true);
