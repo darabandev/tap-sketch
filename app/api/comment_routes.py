@@ -30,3 +30,13 @@ def new_comment():
 
     data = [comment.to_dict() for comment in comments]
     return json.dumps(data)
+
+
+@comment_routes.route("/<int:drawing_id>")
+@login_required
+def get_comments(drawing_id):
+    comments = Comment.query.filter(Comment.drawing_id == drawing_id).order_by(
+        desc(Comment.created_at)).all()
+
+    data = [comment.to_dict() for comment in comments]
+    return json.dumps(data)

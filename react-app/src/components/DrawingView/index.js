@@ -1,11 +1,21 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import dateConverter from "../../services/dateConverter";
+import { getCommentsForDrawing } from "../../store/comments";
 import CommentInput from "../CommentInput";
+import CommentDisplay from "../CommentDisplay";
 import "./DrawingView.css";
 
 const DrawingView = ({ drawing }) => {
+  const comments = useSelector(state => state.comments);
+  const dispatch = useDispatch();
+  const { drawingId } = useParams();
   const [showCommentInput, setShowCommentInput] = useState(false);
+
+  useEffect(() => {
+    dispatch(getCommentsForDrawing(drawingId));
+  }, [dispatch, drawingId]);
 
   const handleCommentInput = () => {
     setShowCommentInput(prev => !prev);
@@ -31,7 +41,8 @@ const DrawingView = ({ drawing }) => {
         </Link>
         <span className="drawing-caption"> {drawing.caption}</span>
       </p>
-      {showCommentInput && <CommentInput />}
+      {showCommentInput && <CommentInput drawingId={drawingId} />}
+      <CommentDisplay comments={comments} />
     </div>
   );
 };

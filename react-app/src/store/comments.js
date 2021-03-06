@@ -27,7 +27,14 @@ export const postNewComment = comment => async dispatch => {
   dispatch(setComments(data));
 };
 
-const initialState = {};
+export const getCommentsForDrawing = drawingId => async dispatch => {
+  const res = await fetch(`/api/comments/${drawingId}`);
+  const data = await res.json();
+
+  dispatch(setComments(data));
+};
+
+const initialState = [];
 
 const commentReducer = (state = initialState, action) => {
   switch (action.type) {

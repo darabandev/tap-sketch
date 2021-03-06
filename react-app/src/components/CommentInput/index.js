@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { postNewComment } from "../../store/comments";
 import "./CommentInput.css";
 
-const CommentInput = () => {
+const CommentInput = ({ drawingId }) => {
   const dispatch = useDispatch();
-  const { drawingId } = useParams();
   const [commentText, setCommentText] = useState("");
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const userId = useSelector(state => state.session.user.id);
@@ -21,6 +19,7 @@ const CommentInput = () => {
 
   const handlePost = () => {
     dispatch(postNewComment({ userId, drawingId, commentText }));
+    setCommentText("");
   };
 
   return (
