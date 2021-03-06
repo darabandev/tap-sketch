@@ -1,0 +1,49 @@
+.comment-container {
+  display: flex;
+  padding: 0.6em;
+  border: 1px solid black;
+  border-bottom: none;
+}
+
+.comment-container:first-of-type {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.comment-container:last-of-type {
+  border-bottom: 1px solid black;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.comment-pic-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment-prof-pic {
+  max-width: 4em;
+  border-radius: 50%;
+  margin-right: 1em;
+}
+
+.comment-info {
+  flex-grow: 1;
+}
+
+.comment-user {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.comment-content {
+  max-width: 30em;
+}
+
+.comment-date {
+  display: block;
+  text-align: end;
+  font-size: 0.9em;
+  color: #555;
+}

@@ -1,14 +1,17 @@
 import React from "react";
 import dateConverter from "../../services/dateConverter";
+import "./Comment.css";
 
 const Comment = ({ comment }) => {
   return (
     <div className="comment-container">
-      <img src={comment.user_profile_img || "https://i.imgur.com/5NakJ8y.png"} />
+      <div className="comment-pic-container">
+        <img className="comment-prof-pic" src={comment.user_profile_img || "https://i.imgur.com/5NakJ8y.png"} />
+      </div>
       <div className="comment-info">
-        <p>{comment.username}</p>
-        <p>{comment.comment}</p>
-        <p>{dateConverter(comment.created_at)}</p>
+        <p className="comment-user">{comment.username}</p>
+        <p className="comment-content">{comment.comment}</p>
+        <p className="comment-date">{dateConverter(comment.created_at)}</p>
       </div>
     </div>
   );
