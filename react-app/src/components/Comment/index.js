@@ -6,7 +6,11 @@ const Comment = ({ comment, sessionUser }) => {
   return (
     <div className="comment-container">
       <div className="comment-pic-container">
-        <img className="comment-prof-pic" src={comment.user_profile_img || "https://i.imgur.com/5NakJ8y.png"} />
+        <img
+          alt="profile"
+          className="comment-prof-pic"
+          src={comment.user_profile_img || "https://i.imgur.com/5NakJ8y.png"}
+        />
       </div>
       <div className="comment-info">
         <p className="comment-user">{comment.username}</p>
