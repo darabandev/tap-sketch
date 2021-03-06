@@ -22,29 +22,6 @@
   justify-content: space-between;
 }
 
-.canvas-upload-tools textarea {
-  flex-grow: 1;
-  border-radius: 0.3em;
-  outline: none;
-  font-size: 0.9em;
-}
-
-.canvas-upload-tools button {
-  margin-left: 1em;
-  padding: 1em;
-  outline: none;
-  border: none;
-  border-radius: 0.3em;
-  background-color: #ffa500;
-  color: white;
-  font-size: 1em;
-}
-
-.canvas-upload-tools button:disabled {
-  background-color: gray;
-  cursor: not-allowed;
-}
-
 @media screen and (max-width: 1000px) {
   .canvas-tools-container {
     max-width: 100%;

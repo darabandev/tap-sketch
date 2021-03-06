@@ -99,11 +99,12 @@ const Canvas = () => {
       <div className="canvas-upload-tools">
         <textarea
           type="text"
+          className="input-bar-text"
           value={caption}
           onChange={e => setCaption(e.target.value)}
           placeholder="Please enter a caption."
         ></textarea>
-        <button onClick={handleSave} disabled={buttonDisabled}>
+        <button onClick={handleSave} disabled={buttonDisabled} className="input-bar-button">
           POST
         </button>
       </div>

@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import dateConverter from "../../services/dateConverter";
+import CommentInput from "../CommentInput";
 import "./DrawingView.css";
 
 const DrawingView = ({ drawing }) => {
+  const [showCommentInput, setShowCommentInput] = useState(false);
+
+  const handleCommentInput = () => {
+    setShowCommentInput(prev => !prev);
+  };
+
   return (
     <div>
       <img className="drawing-img" src={drawing.data_url} alt="drawing" />
@@ -12,7 +19,7 @@ const DrawingView = ({ drawing }) => {
           <button className="drawing-btn">
             <i class="far fa-heart"></i>
           </button>
-          <button className="drawing-btn">
+          <button className="drawing-btn" onClick={handleCommentInput}>
             <i class="far fa-comment"></i>
           </button>
         </div>
@@ -24,6 +31,7 @@ const DrawingView = ({ drawing }) => {
         </Link>
         <span className="drawing-caption"> {drawing.caption}</span>
       </p>
+      {showCommentInput && <CommentInput />}
     </div>
   );
 };
