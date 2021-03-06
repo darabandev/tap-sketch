@@ -4,6 +4,7 @@ import sessionReducer from "./session";
 import drawingReducer from "./drawings";
 import otherUserReducer from "./users";
 import followReducer from "./follows";
+import commentReducer from "./comments";
 
 const appReducer = combineReducers({
   // add individual reducer key-value pairs here.
@@ -11,6 +12,7 @@ const appReducer = combineReducers({
   drawings: drawingReducer,
   otherUsers: otherUserReducer,
   follows: followReducer,
+  comments: commentReducer,
 });
 
 const rootReducer = (state, action) => {

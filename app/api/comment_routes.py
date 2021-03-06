@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, request, json
 from flask_login import login_required
 from app.models import Comment, db
 from datetime import datetime
@@ -14,7 +14,7 @@ def new_comment():
 
     user_id = comment_obj["user_id"]
     drawing_id = comment_obj["drawing_id"]
-    comment_text = comment_obj["comment"]
+    comment_text = comment_obj["comment_text"]
 
     comment = Comment(
         user_id=user_id,
