@@ -1,11 +1,11 @@
 import React from "react";
 import Comment from "../Comment";
 
-const CommentDisplay = ({ comments }) => {
+const CommentDisplay = ({ comments, sessionUser }) => {
   return (
     <div style={{ padding: "1em 0" }}>
       {comments.map(comment => (
-        <Comment comment={comment} />
+        <Comment sessionUser={sessionUser} comment={comment} />
       ))}
     </div>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import dateConverter from "../../services/dateConverter";
 import "./Comment.css";
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, sessionUser }) => {
   return (
     <div className="comment-container">
       <div className="comment-pic-container">
@@ -13,6 +13,11 @@ const Comment = ({ comment }) => {
         <p className="comment-content">{comment.comment}</p>
         <p className="comment-date">{dateConverter(comment.created_at)}</p>
       </div>
+      {sessionUser.id === comment.user_id && (
+        <button className="comment-delete-btn">
+          <i class="far fa-trash-alt"></i>
+        </button>
+      )}
     </div>
   );
 };

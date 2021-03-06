@@ -9,6 +9,7 @@ import "./DrawingView.css";
 
 const DrawingView = ({ drawing }) => {
   const comments = useSelector(state => state.comments);
+  const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const { drawingId } = useParams();
   const [showCommentInput, setShowCommentInput] = useState(false);
@@ -42,7 +43,7 @@ const DrawingView = ({ drawing }) => {
         <span className="drawing-caption"> {drawing.caption}</span>
       </p>
       {showCommentInput && <CommentInput drawingId={drawingId} />}
-      <CommentDisplay comments={comments} />
+      <CommentDisplay sessionUser={sessionUser} comments={comments} />
     </div>
   );
 };
