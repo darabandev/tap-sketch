@@ -3,8 +3,33 @@
   border-radius: 5px;
 }
 
+.drawing-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drawing-date {
+  font-size: 1.2em;
+}
+
 .drawing-username {
   font-weight: bold;
+  color: black;
+  font-size: 1.4em;
+}
+
+.drawing-caption {
+  font-size: 1.4em;
+  margin-left: 0.3em;
+}
+
+.drawing-btn {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  margin-right: 1em;
+  font-size: 1.8em;
 }
 
 @media screen and (max-width: 1000px) {
