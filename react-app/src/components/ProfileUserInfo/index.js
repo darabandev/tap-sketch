@@ -1,7 +1,21 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { followNewUser } from "../../store/follows";
 import "./ProfileUserInfo.css";
 
 const ProfileUserInfo = ({ user, drawings }) => {
+  const sessionUser = useSelector(state => state.session.user);
+  const dispatch = useDispatch();
+
+  const handleNewFollow = () => {
+    dispatch(
+      followNewUser({
+        userFollowing: sessionUser.id,
+        userBeingFollowed: user.id,
+      })
+    );
+  };
+
   return (
     <div className="profile-user-info">
       <div className="profile-pic-container">
@@ -25,7 +39,9 @@ const ProfileUserInfo = ({ user, drawings }) => {
             <p className="profile-info-text">Following</p>
           </div>
           <div>
-            <button className="profile-follow-btn">Follow</button>
+            <button className="profile-follow-btn" onClick={handleNewFollow}>
+              Follow
+            </button>
           </div>
         </div>
       </div>

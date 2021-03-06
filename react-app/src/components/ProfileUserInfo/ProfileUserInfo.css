@@ -26,11 +26,18 @@
 
 .profile-info-container h1 {
   font-size: 2.5em;
+  margin-bottom: 0.5em;
 }
 
 .profile-info-items {
   display: flex;
   justify-content: space-around;
+}
+
+.profile-info-items div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .profile-info-number {
@@ -44,7 +51,8 @@
 
 .profile-follow-btn {
   font-size: 1.5em;
-  padding: 1em;
+  line-height: 1.5em;
+  padding: 0.8em 1em;
   border: none;
   background-color: #ffa500;
   border-radius: 5px;

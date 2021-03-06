@@ -3,12 +3,14 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import drawingReducer from "./drawings";
 import otherUserReducer from "./users";
+import followReducer from "./follows";
 
 const appReducer = combineReducers({
   // add individual reducer key-value pairs here.
   session: sessionReducer,
   drawings: drawingReducer,
   otherUsers: otherUserReducer,
+  follows: followReducer,
 });
 
 const rootReducer = (state, action) => {

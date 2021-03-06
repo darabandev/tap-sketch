@@ -1,6 +1,6 @@
+from app.models.follow import Follow
 from flask import Blueprint, request
 from flask_login import login_required
-from app.models import User, follow
 
 follow_routes = Blueprint("follows", __name__)
 
