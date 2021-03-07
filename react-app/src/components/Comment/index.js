@@ -1,8 +1,18 @@
 import React from "react";
 import dateConverter from "../../services/dateConverter";
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deleteComment } from "../../store/comments";
 import "./Comment.css";
 
 const Comment = ({ comment, sessionUser }) => {
+  const dispatch = useDispatch();
+  const { drawingId } = useParams();
+
+  const handleDeleteComment = () => {
+    dispatch(deleteComment(drawingId, comment.id));
+  };
+
   return (
     <div className="comment-container">
       <div className="comment-pic-container">
@@ -18,7 +28,7 @@ const Comment = ({ comment, sessionUser }) => {
         <p className="comment-date">{dateConverter(comment.created_at)}</p>
       </div>
       {sessionUser.id === comment.user_id && (
-        <button className="comment-delete-btn">
+        <button className="comment-delete-btn" onClick={handleDeleteComment}>
           <i className="far fa-trash-alt"></i>
         </button>
       )}

@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request, Response
+from flask_login import login_required
 from app.models import User, Drawing, db
 import json
 from sqlalchemy import desc
@@ -31,6 +32,7 @@ def get_one_drawing(id):
 
 
 @drawing_routes.route("/user/<username>")
+@login_required
 def user(username):
     user = User.query.filter(User.username == username).one()
     drawings = Drawing.query.filter(Drawing.user_id == user.id).order_by(
@@ -41,6 +43,7 @@ def user(username):
 
 
 @drawing_routes.route("/profile", methods=["POST"])
+@login_required
 def set_profile_image():
     request_obj = request.get_json()
 

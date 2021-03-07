@@ -34,6 +34,15 @@ export const getCommentsForDrawing = drawingId => async dispatch => {
   dispatch(setComments(data));
 };
 
+export const deleteComment = (drawingId, commentId) => async dispatch => {
+  const res = await fetch(`/api/comments/delete/${drawingId}/${commentId}`, {
+    method: "DELETE",
+  });
+  const data = await res.json();
+
+  dispatch(setComments(data));
+};
+
 const initialState = [];
 
 const commentReducer = (state = initialState, action) => {
