@@ -7,7 +7,7 @@ from sqlalchemy import desc
 comment_routes = Blueprint("comments", __name__)
 
 
-def return_comments(drawing_id, comment_id):
+def set_comments(drawing_id):
     comments = Comment.query.filter(Comment.drawing_id == drawing_id).order_by(
         desc(Comment.created_at)).all()
 
@@ -33,21 +33,13 @@ def new_comment():
     db.session.add(comment)
     db.session.commit()
 
-    comments = Comment.query.filter(Comment.drawing_id == drawing_id).order_by(
-        desc(Comment.created_at)).all()
-
-    data = [comment.to_dict() for comment in comments]
-    return json.dumps(data)
+    return set_comments(drawing_id)
 
 
 @comment_routes.route("/<int:drawing_id>")
 @login_required
 def get_comments(drawing_id):
-    comments = Comment.query.filter(Comment.drawing_id == drawing_id).order_by(
-        desc(Comment.created_at)).all()
-
-    data = [comment.to_dict() for comment in comments]
-    return json.dumps(data)
+    return set_comments(drawing_id)
 
 
 @comment_routes.route("/delete/<int:drawing_id>/<int:comment_id>",
@@ -59,4 +51,4 @@ def delete_comment(drawing_id, comment_id):
     db.session.delete(comment)
     db.session.commit()
 
-    return return_comments(drawing_id, comment_id)
+    return set_comments(drawing_id)

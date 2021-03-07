@@ -5,7 +5,7 @@ const CommentDisplay = ({ comments, sessionUser }) => {
   return (
     <div style={{ padding: "1em 0" }}>
       {comments.map(comment => (
-        <Comment sessionUser={sessionUser} comment={comment} />
+        <Comment key={comment.id} sessionUser={sessionUser} comment={comment} />
       ))}
     </div>
   );
