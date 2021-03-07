@@ -9,6 +9,11 @@
   align-items: center;
 }
 
+.drawing-items div {
+  display: flex;
+  align-items: center;
+}
+
 .drawing-date {
   font-size: 1.2em;
 }
@@ -30,6 +35,22 @@
   border: none;
   margin-right: 1em;
   font-size: 1.8em;
+}
+
+.drawing-profile-btn {
+  border: 1px solid #54e317;
+  background-color: transparent;
+  color: #54e317;
+  padding: 0.3em 0.5em;
+  border-radius: 5px;
+  transition: 0.2s;
+  font-size: 1em;
+}
+
+.drawing-profile-btn:hover {
+  background-color: #54e317;
+  color: white;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1000px) {
