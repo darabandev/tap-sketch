@@ -19,7 +19,7 @@ const ProfileUserInfo = ({ user, drawings }) => {
   return (
     <div className="profile-user-info">
       <div className="profile-pic-container">
-        <img src="https://i.imgur.com/N2Fd2if.jpg" className="profile-pic" alt="profile pic" />
+        <img src={user.profile_img || "https://i.imgur.com/5NakJ8y.png"} className="profile-pic" alt="profile pic" />
       </div>
       <div className="profile-info-container">
         <div>

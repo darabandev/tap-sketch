@@ -19,7 +19,7 @@ const Comment = ({ comment, sessionUser }) => {
       </div>
       {sessionUser.id === comment.user_id && (
         <button className="comment-delete-btn">
-          <i class="far fa-trash-alt"></i>
+          <i className="far fa-trash-alt"></i>
         </button>
       )}
     </div>

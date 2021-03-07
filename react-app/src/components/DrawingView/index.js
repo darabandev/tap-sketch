@@ -22,17 +22,31 @@ const DrawingView = ({ drawing }) => {
     setShowCommentInput(prev => !prev);
   };
 
+  const updateProfileImage = async () => {
+    await fetch(`/api/drawings/profile`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: sessionUser.id,
+        drawing_id: drawing.id,
+      }),
+    });
+  };
+
   return (
     <div>
       <img className="drawing-img" src={drawing.data_url} alt="drawing" />
       <div className="drawing-items">
         <div>
           <button className="drawing-btn">
-            <i class="far fa-heart"></i>
+            <i className="far fa-heart"></i>
           </button>
           <button className="drawing-btn" onClick={handleCommentInput}>
-            <i class="far fa-comment"></i>
+            <i className="far fa-comment"></i>
           </button>
+          {drawing.user_id === sessionUser.id && <button onClick={updateProfileImage}>Make Profile Image</button>}
         </div>
         <p className="drawing-date">{dateConverter(drawing.created_at)}</p>
       </div>

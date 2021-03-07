@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, Response
 from app.models import User, Drawing, db
 import json
 from sqlalchemy import desc
@@ -38,3 +38,19 @@ def user(username):
     data = [drawing.to_dict() for drawing in drawings]
 
     return json.dumps(data, default=str)
+
+
+@drawing_routes.route("/profile", methods=["POST"])
+def set_profile_image():
+    request_obj = request.get_json()
+
+    user_id = request_obj["user_id"]
+    drawing_id = request_obj["drawing_id"]
+
+    user = User.query.get(user_id)
+    drawing = Drawing.query.get(drawing_id)
+
+    user.profile_img = drawing.data_url
+    db.session.commit()
+
+    return Response("{'a':'b'}", status=200, mimetype='application/json')

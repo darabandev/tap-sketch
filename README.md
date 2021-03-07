@@ -12,9 +12,9 @@ This is the backend for the Flask React project.
 
 2. Install dependencies
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+   ```bash
+   pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+   ```
 
 3. Create a **.env** file based on the example with proper settings for your
    development environment
@@ -40,19 +40,21 @@ This is the backend for the Flask React project.
 
 6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
 
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
+---
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+_IMPORTANT!_
+If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
+You can do this by running:
 
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
+```bash
+pipenv lock -r > requirements.txt
+```
+
+_ALSO IMPORTANT!_
+psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
+There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
+
+---
 
 ## Deploy to Heroku
 
@@ -96,3 +98,21 @@ This is the backend for the Flask React project.
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
 
 11. profit
+
+---
+
+### WSL1 heroku push through powershell:
+
+If you have docker installed in your powershell and not in your wsl terminal, the following replace step 7 in the deploy section of your project readme “Deploy to Heroku” section:
+
+7a. cd into the root of your app in your powershell and build the image from the Dockerfile with a specific tag!
+
+(IF YOU ARE DEPLOYING FOR THE SECOND TIME, you must delete the older version of this image with `docker image rm registry.heroku.com/<app_name>/web` before you build)
+
+`docker build --tag registry.heroku.com/<app_name>/web .`
+
+7b. Push that newly built image to heroku:
+
+`docker push registry.heroku.com/<app_name>/web`
+
+Continue with step 8 in the readme
