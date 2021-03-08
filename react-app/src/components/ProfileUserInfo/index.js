@@ -31,11 +31,11 @@ const ProfileUserInfo = ({ user, drawings }) => {
             <p className="profile-info-text">Drawings</p>
           </div>
           <div>
-            <p className="profile-info-number">{drawings.length}</p>
+            <p className="profile-info-number">0</p>
             <p className="profile-info-text">Followers</p>
           </div>
           <div>
-            <p className="profile-info-number">{drawings.length}</p>
+            <p className="profile-info-number">0</p>
             <p className="profile-info-text">Following</p>
           </div>
           <div>

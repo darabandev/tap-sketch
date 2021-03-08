@@ -37,6 +37,10 @@
   font-size: 1.8em;
   cursor: pointer;
 }
+/* 
+.drawing-btn.like-btn {
+  color: #ffa500;
+} */
 
 .drawing-profile-btn {
   border: 1px solid #54e317;
