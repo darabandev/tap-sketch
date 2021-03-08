@@ -3,7 +3,6 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import drawingReducer from "./drawings";
 import otherUserReducer from "./users";
-import followReducer from "./follows";
 import commentReducer from "./comments";
 
 const appReducer = combineReducers({
@@ -11,7 +10,6 @@ const appReducer = combineReducers({
   session: sessionReducer,
   drawings: drawingReducer,
   otherUsers: otherUserReducer,
-  follows: followReducer,
   comments: commentReducer,
 });
 
