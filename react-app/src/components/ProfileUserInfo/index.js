@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { followNewUser } from "../../store/follows";
+import { followUser } from "../../store/users";
 import "./ProfileUserInfo.css";
 
 const ProfileUserInfo = ({ user, drawings }) => {
@@ -10,7 +10,7 @@ const ProfileUserInfo = ({ user, drawings }) => {
   // dispatches thunk to start "following" a user
   const handleNewFollow = () => {
     dispatch(
-      followNewUser({
+      followUser({
         userFollowing: sessionUser.id,
         userBeingFollowed: user.id,
       })

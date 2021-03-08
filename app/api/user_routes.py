@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import User
+from app.models import User, db
 
 user_routes = Blueprint('users', __name__)
 
@@ -36,4 +36,4 @@ def follow_user():
     followed.followers.append(follower)
     db.session.commit()
 
-    return user.to_dict()
+    return followed.to_dict()

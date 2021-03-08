@@ -14,6 +14,24 @@ export const getOneUser = username => async dispatch => {
   dispatch(getUser(data));
 };
 
+export const followUser = requestObj => async dispatch => {
+  const { userFollowing, userBeingFollowed } = requestObj;
+
+  const res = await fetch(`/api/users/follow`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user_following: userFollowing,
+      user_being_followed: userBeingFollowed,
+    }),
+  });
+
+  const data = await res.json();
+  dispatch(getUser(data));
+};
+
 const initialState = { singleOtherUser: null, manyOtherUsers: null };
 
 export default function otherUserReducer(state = initialState, action) {
