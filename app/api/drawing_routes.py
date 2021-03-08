@@ -72,3 +72,18 @@ def like_an_image():
     db.session.commit()
 
     return drawing.to_dict()
+
+
+@drawing_routes.route("/unlike", methods=["POST"])
+@login_required
+def unlike_an_image():
+    request_obj = request.get_json()
+
+    user = User.query.get(request_obj["user_id"])
+    drawing = Drawing.query.get(request_obj["drawing_id"])
+
+    drawing.user.remove(user)
+
+    db.session.commit()
+
+    return drawing.to_dict()

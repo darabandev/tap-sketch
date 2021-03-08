@@ -77,6 +77,24 @@ export const likeOneDrawing = likeObj => async dispatch => {
   dispatch(getDrawing(data));
 };
 
+export const unlikeOneDrawing = unlikeObj => async dispatch => {
+  const { userId, drawingId } = unlikeObj;
+
+  const res = await fetch(`/api/drawings/unlike`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      drawing_id: drawingId,
+    }),
+  });
+
+  const data = await res.json();
+  dispatch(getDrawing(data));
+};
+
 const initialState = { currentDrawing: null, userDrawings: null, userViewing: null };
 
 export default function sessionReducer(state = initialState, action) {

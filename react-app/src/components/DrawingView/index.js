@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import dateConverter from "../../services/dateConverter";
-import { likeOneDrawing } from "../../store/drawings";
+import { likeOneDrawing, unlikeOneDrawing } from "../../store/drawings";
 import { getCommentsForDrawing } from "../../store/comments";
 import CommentInput from "../CommentInput";
 import CommentDisplay from "../CommentDisplay";
@@ -45,6 +45,11 @@ const DrawingView = ({ drawing }) => {
     dispatch(likeOneDrawing({ userId: sessionUser.id, drawingId: drawing.id }));
   };
 
+  // allows user to "unlike" a drawing if they've already "liked" it
+  const handleDrawingUnlike = () => {
+    dispatch(unlikeOneDrawing({ userId: sessionUser.id, drawingId: drawing.id }));
+  };
+
   // determines if user has already liked this drawing,
   // renders a different like icon and dispatches different
   // thunk based on if user liked drawing or not
@@ -56,7 +61,7 @@ const DrawingView = ({ drawing }) => {
       <div className="drawing-items">
         <div>
           {doesUserLikeThisDrawing() ? (
-            <button className="drawing-btn like-btn" onClick={handleDrawingLike}>
+            <button className="drawing-btn like-btn" onClick={handleDrawingUnlike}>
               <i className="fas fa-heart"></i>
             </button>
           ) : (
