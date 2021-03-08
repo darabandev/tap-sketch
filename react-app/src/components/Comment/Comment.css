@@ -33,6 +33,11 @@
   flex-grow: 1;
 }
 
+.comment-info a {
+  color: black;
+  text-decoration: none;
+}
+
 .comment-user {
   font-size: 1.1em;
   font-weight: bold;

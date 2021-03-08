@@ -35,6 +35,7 @@
   border: none;
   margin-right: 1em;
   font-size: 1.8em;
+  cursor: pointer;
 }
 
 .drawing-profile-btn {
