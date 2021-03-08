@@ -32,11 +32,11 @@ const ProfileUserInfo = ({ user, drawings }) => {
             <p className="profile-info-text">Drawings</p>
           </div>
           <div>
-            <p className="profile-info-number">0</p>
+            <p className="profile-info-number">{user.followers.length}</p>
             <p className="profile-info-text">Followers</p>
           </div>
           <div>
-            <p className="profile-info-number">0</p>
+            <p className="profile-info-number">{user.follows.length}</p>
             <p className="profile-info-text">Following</p>
           </div>
           <div>
