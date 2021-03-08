@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import User
 
@@ -22,4 +22,18 @@ def user(id):
 @user_routes.route("/username/<username>", endpoint="get_user")
 def user(username):
     user = User.query.filter(User.username == username).one()
+    return user.to_dict()
+
+
+@user_routes.route("/follow", methods=["POST"])
+@login_required
+def follow_user():
+    request_obj = request.get_json()
+
+    follower = User.query.get(request_obj["user_following"])
+    followed = User.query.get(request_obj["user_being_followed"])
+
+    followed.followers.append(follower)
+    db.session.commit()
+
     return user.to_dict()
