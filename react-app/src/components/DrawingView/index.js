@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import dateConverter from "../../services/dateConverter";
+import { likeOneDrawing } from "../../store/drawings";
 import { getCommentsForDrawing } from "../../store/comments";
 import CommentInput from "../CommentInput";
 import CommentDisplay from "../CommentDisplay";
@@ -35,12 +36,16 @@ const DrawingView = ({ drawing }) => {
     });
   };
 
+  const handleDrawingLike = () => {
+    dispatch(likeOneDrawing({ userId: sessionUser.id, drawingId: drawing.id }));
+  };
+
   return (
     <div>
       <img className="drawing-img" src={drawing.data_url} alt="drawing" />
       <div className="drawing-items">
         <div>
-          <button className="drawing-btn">
+          <button className="drawing-btn" onClick={handleDrawingLike}>
             <i className="far fa-heart"></i>
           </button>
           <button className="drawing-btn" onClick={handleCommentInput}>

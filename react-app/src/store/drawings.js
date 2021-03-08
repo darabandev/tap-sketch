@@ -59,6 +59,24 @@ export const getAllDrawingsForUser = username => async dispatch => {
   dispatch(getUserDrawings(data));
 };
 
+export const likeOneDrawing = likeObj => async dispatch => {
+  const {userId, drawingId} = likeObj;
+
+  const res = await fetch(`/api/drawings/like`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      drawing_id: drawingId
+    })
+  })
+
+  const data = await res.json();
+  console.log(data)
+}
+
 const initialState = { currentDrawing: null, userDrawings: null, userViewing: null };
 
 export default function sessionReducer(state = initialState, action) {

@@ -57,3 +57,18 @@ def set_profile_image():
     db.session.commit()
 
     return Response("{'a':'b'}", status=200, mimetype='application/json')
+
+
+@drawing_routes.route("/like", methods=["POST"])
+@login_required
+def like_an_image():
+    request_obj = request.get_json()
+
+    user = User.query.get(request_obj["user_id"])
+    drawing = Drawing.query.get(request_obj["drawing_id"])
+
+    drawing.user.append(user)
+
+    db.session.commit()
+
+    return Response("{'a':'b'}", status=200, mimetype='application/json')
