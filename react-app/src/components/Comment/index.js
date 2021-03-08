@@ -9,6 +9,7 @@ const Comment = ({ comment, sessionUser }) => {
   const dispatch = useDispatch();
   const { drawingId } = useParams();
 
+  // dispatches thunk to delete comment from DB
   const handleDeleteComment = () => {
     dispatch(deleteComment(drawingId, comment.id));
   };

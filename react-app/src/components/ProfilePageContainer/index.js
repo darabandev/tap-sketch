@@ -13,6 +13,8 @@ const ProfilePageContainer = () => {
   const drawings = useSelector(state => state.drawings.userDrawings);
   const user = useSelector(state => state.otherUsers.singleOtherUser);
 
+  // dispatches thunks to grab profile info for the user being viewed
+  // as well as all of their drawings
   useEffect(() => {
     dispatch(getAllDrawingsForUser(username));
     dispatch(getOneUser(username));

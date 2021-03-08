@@ -7,6 +7,7 @@ const ProfileUserInfo = ({ user, drawings }) => {
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  // dispatches thunk to start "following" a user
   const handleNewFollow = () => {
     dispatch(
       followNewUser({

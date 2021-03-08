@@ -10,6 +10,7 @@ const DrawingPageContainer = () => {
   const dispatch = useDispatch();
   const drawing = useSelector(state => state.drawings.currentDrawing);
 
+  // dispatches thunk to grab info on specific drawing from DB
   useEffect(() => {
     dispatch(getOneDrawing(drawingId));
   }, [dispatch, drawingId]);

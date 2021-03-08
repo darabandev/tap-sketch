@@ -16,6 +16,8 @@ const Canvas = () => {
   const paths = [];
   let currentPath = [];
 
+  // monitors length of caption and disables submit button if caption
+  // is too short or too long
   useEffect(() => {
     if (caption.length >= 1 && caption.length <= 200) {
       setButtonDisabled(false);
@@ -24,6 +26,9 @@ const Canvas = () => {
     }
   }, [caption]);
 
+  // p5.js func - creates a canvas at the specified dimensions
+  // creates 600px * 600px canvas on full screen size
+  // creates full-window size canvas on mobile screen size
   const setup = (p5, canvasParentRef) => {
     if (window.innerWidth <= 1000) {
       p5.createCanvas(window.innerWidth, window.innerWidth).parent(canvasParentRef);
@@ -32,10 +37,13 @@ const Canvas = () => {
     }
   };
 
+  // allows users to draw lines on the canvas
   const draw = p5 => {
     p5.noFill();
 
     if (p5.mouseIsPressed) {
+      // creates new point/line every time mouse is clicked, "color"
+      // and "weight" properties allow users to change appearance of line
       const point = {
         x: p5.mouseX,
         y: p5.mouseY,
@@ -56,11 +64,15 @@ const Canvas = () => {
     });
   };
 
+  // p5.js func - adds individual line to collection of lines
   const mousePressed = () => {
     currentPath = [];
     paths.push(currentPath);
   };
 
+  // utilizies built-in canvas function to save visual drawing in the
+  // form of text to be stored in the database - can then be used as
+  // a src attribute inside of an img tag
   const handleSave = () => {
     const canvas = document.querySelector("canvas");
     const dataUrl = canvas.toDataURL();
@@ -69,17 +81,13 @@ const Canvas = () => {
     history.push(`/profile/${username}`);
   };
 
+  // makes canvas responsive to window size but currently compromises contents
+  // of the drawing
   const windowResized = p5 => {
     if (p5.windowWidth < 1000) {
       p5.resizeCanvas(window.innerWidth, window.innerWidth);
     } else {
       p5.resizeCanvas(600, 600);
-    }
-  };
-
-  const keyTyped = p5 => {
-    if (p5.key === "a") {
-      paths.pop();
     }
   };
 
@@ -95,7 +103,7 @@ const Canvas = () => {
           <p>Thickness</p>
         </div>
       </div>
-      <Sketch setup={setup} draw={draw} mousePressed={mousePressed} windowResized={windowResized} keyTyped={keyTyped} />
+      <Sketch setup={setup} draw={draw} mousePressed={mousePressed} windowResized={windowResized} />
       <div className="canvas-upload-tools">
         <textarea
           type="text"

@@ -9,6 +9,8 @@ const CommentInput = ({ drawingId }) => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const userId = useSelector(state => state.session.user.id);
 
+  // keeps track of comment length and disables submit button if
+  // comment is either too short or too long
   useEffect(() => {
     if (commentText.length >= 1 && commentText.length <= 300) {
       setButtonDisabled(false);
@@ -17,6 +19,7 @@ const CommentInput = ({ drawingId }) => {
     }
   }, [commentText]);
 
+  // dispatches the thunk to post new comment to DB and resets text input
   const handlePost = () => {
     dispatch(postNewComment({ userId, drawingId, commentText }));
     setCommentText("");

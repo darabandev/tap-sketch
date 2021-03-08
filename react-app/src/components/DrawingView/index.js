@@ -51,7 +51,7 @@ const DrawingView = ({ drawing }) => {
   };
 
   // determines if user has already liked this drawing,
-  // renders a different like icon and dispatches different
+  // renders a different heart icon and dispatches different
   // thunk based on if user liked drawing or not
   const doesUserLikeThisDrawing = () => drawing.liked_by.includes(sessionUser.id);
 
