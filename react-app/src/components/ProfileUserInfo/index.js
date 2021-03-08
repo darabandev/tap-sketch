@@ -17,6 +17,24 @@ const ProfileUserInfo = ({ user, drawings }) => {
     );
   };
 
+  const handleUnfollow = () => {
+    dispatch(
+      unfollowUser({
+        userFollowing: sessionUser.id,
+        userBeingFollowed: user.id,
+      })
+    );
+  };
+
+  // check if the user profile belongs to the logged in user
+  // will determine if it should render follow button or not
+  const isSameAsSessionUser = () => sessionUser.id === user.id;
+
+  // check if logged-in user is already following the displayed user,
+  // is a nested ternary in the component - only gets evaluated if
+  // isSameAsSessionUser returns false
+  const isAlreadyFollowing = () => user.followers.includes(sessionUser.id);
+
   return (
     <div className="profile-user-info">
       <div className="profile-pic-container">
@@ -40,9 +58,15 @@ const ProfileUserInfo = ({ user, drawings }) => {
             <p className="profile-info-text">Following</p>
           </div>
           <div>
-            <button className="profile-follow-btn" onClick={handleNewFollow}>
-              Follow
-            </button>
+            {isSameAsSessionUser() ? null : isAlreadyFollowing() ? (
+              <button className="profile-follow-btn" onClick={handleUnfollow}>
+                Unfollow
+              </button>
+            ) : (
+              <button className="profile-follow-btn" onClick={handleNewFollow}>
+                Follow
+              </button>
+            )}
           </div>
         </div>
       </div>
