@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { followUser } from "../../store/users";
+import { followUser, unfollowUser } from "../../store/users";
 import "./ProfileUserInfo.css";
 
 const ProfileUserInfo = ({ user, drawings }) => {
@@ -17,6 +17,8 @@ const ProfileUserInfo = ({ user, drawings }) => {
     );
   };
 
+  // dispatches thunk to "unfollow" a user that is already being
+  // "followed"
   const handleUnfollow = () => {
     dispatch(
       unfollowUser({

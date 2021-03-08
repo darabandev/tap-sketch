@@ -37,3 +37,17 @@ def follow_user():
     db.session.commit()
 
     return followed.to_dict()
+
+
+@user_routes.route("/unfollow", methods=["POST"])
+@login_required
+def unfollow_user():
+    request_obj = request.get_json()
+
+    follower = User.query.get(request_obj["user_following"])
+    followed = User.query.get(request_obj["user_being_followed"])
+
+    followed.followers.remove(follower)
+    db.session.commit()
+
+    return followed.to_dict()
