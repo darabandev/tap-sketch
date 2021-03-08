@@ -1,6 +1,7 @@
 .drawing-img {
   border: 1px solid black;
   border-radius: 5px;
+  max-width: 40em;
 }
 
 .drawing-items {
@@ -36,11 +37,8 @@
   margin-right: 1em;
   font-size: 1.8em;
   cursor: pointer;
-}
-/* 
-.drawing-btn.like-btn {
   color: #ffa500;
-} */
+}
 
 .drawing-profile-btn {
   border: 1px solid #54e317;

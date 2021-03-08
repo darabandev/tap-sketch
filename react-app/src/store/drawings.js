@@ -97,7 +97,7 @@ export const unlikeOneDrawing = unlikeObj => async dispatch => {
 
 const initialState = { currentDrawing: null, userDrawings: null, userViewing: null };
 
-export default function sessionReducer(state = initialState, action) {
+export default function drawingReducer(state = initialState, action) {
   const updateState = { ...state };
   switch (action.type) {
     case NEW_DRAWING:
