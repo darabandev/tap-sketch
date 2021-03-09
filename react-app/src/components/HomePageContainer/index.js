@@ -1,18 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllFollowedUsers } from "../../store/users";
 
 const HomePageContainer = () => {
   const sessionUser = useSelector(state => state.session.user);
+  const followedUsers = useSelector(state => state.otherUsers.manyOtherUsers);
+  const [drawingsReady, setDrawingsReady] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllFollowedUsers(sessionUser.id));
-  });
+    async function getTheDrawings() {
+      const res = await dispatch(getAllFollowedUsers(sessionUser.id));
+      setDrawingsReady(true);
+      return res;
+    }
 
-  if (!sessionUser) return <span>Loading...</span>;
+    getTheDrawings();
+  }, [dispatch, sessionUser]);
 
-  return <h1>Hey</h1>;
+  if (!sessionUser || !drawingsReady) return <span>Loading...</span>;
+
+  return (
+    <div>
+      {followedUsers.drawings.map(drawing => (
+        <h1>{drawing.caption}</h1>
+      ))}
+    </div>
+  );
 };
 
 export default HomePageContainer;
