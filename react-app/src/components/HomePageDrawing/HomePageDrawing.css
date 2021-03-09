@@ -1,6 +1,11 @@
 .drawing-card {
   max-width: 40em;
-  margin: 1em auto;
+  margin: 1.5em auto;
+}
+
+.drawing-card a {
+  color: black;
+  text-decoration: none;
 }
 
 .card-above-img-container,
@@ -29,4 +34,17 @@
 .card-img {
   border: 1px solid #54e317;
   border-radius: 5px;
+}
+
+.card-below-img-container {
+  margin-bottom: 0.3em;
+}
+
+.card-caption {
+  margin-left: 0.3em;
+  font-size: 1.3em;
+}
+
+.card-likes {
+  margin-right: 0.8em;
 }
