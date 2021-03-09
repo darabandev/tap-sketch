@@ -29,5 +29,6 @@ class Drawing(db.Model):
             "data_url": self.data_url,
             "created_at": self.created_at,
             "liked_by": [person.id for person in self.user],
-            "likes": len(self.user)
+            "likes": len(self.user),
+            "comments": len(self.comments)
         }

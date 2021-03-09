@@ -26,6 +26,7 @@ export const getAllFollowedUsers = userId => async dispatch => {
   const res = await fetch(`/api/users/following/${userId}`);
 
   const data = await res.json();
+  console.log(data);
   dispatch(getManyUsers(data));
 };
 

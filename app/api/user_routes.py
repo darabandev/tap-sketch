@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import User, db
+from app.models import User, Drawing, db
 
 user_routes = Blueprint('users', __name__)
 
@@ -58,6 +58,8 @@ def unfollow_user():
 def show_followed_users(id):
     user = User.query.get(id)
 
-    print(user.follows)
+    following = [user.id for user in user.follows]
 
-    return user.to_dict()
+    drawings = Drawing.query.filter(Drawing.user_id.in_(following)).all()
+
+    return {"drawings": [drawing.to_dict() for drawing in drawings]}

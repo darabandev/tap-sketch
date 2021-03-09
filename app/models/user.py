@@ -5,6 +5,7 @@ from .drawing_like import Drawing_Like
 
 follows = db.Table(
     "follows",
+    db.Column("id", db.Integer, primary_key=True),
     db.Column("user_following", db.Integer, db.ForeignKey("users.id")),
     db.Column("user_being_followed", db.Integer, db.ForeignKey("users.id"))
 )
