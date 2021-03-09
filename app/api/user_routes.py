@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import User, Drawing, db
+from sqlalchemy import desc
 
 user_routes = Blueprint('users', __name__)
 
@@ -60,6 +61,7 @@ def show_followed_users(id):
 
     following = [user.id for user in user.follows]
 
-    drawings = Drawing.query.filter(Drawing.user_id.in_(following)).all()
+    drawings = Drawing.query.filter(Drawing.user_id.in_(
+        following)).order_by(desc(Drawing.created_at)).all()
 
     return {"drawings": [drawing.to_dict() for drawing in drawings]}

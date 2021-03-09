@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllFollowedUsers } from "../../store/users";
+import HomePageDrawing from "../HomePageDrawing";
 
 const HomePageContainer = () => {
   const sessionUser = useSelector(state => state.session.user);
@@ -21,9 +22,9 @@ const HomePageContainer = () => {
   if (!sessionUser || !drawingsReady) return <span>Loading...</span>;
 
   return (
-    <div>
+    <div className="main">
       {followedUsers.drawings.map(drawing => (
-        <h1>{drawing.caption}</h1>
+        <HomePageDrawing key={drawing.id} drawing={drawing} />
       ))}
     </div>
   );
