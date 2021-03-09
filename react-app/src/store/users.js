@@ -76,6 +76,7 @@ export default function otherUserReducer(state = initialState, action) {
       return updateState;
     case GET_MANY_USERS:
       updateState.manyOtherUsers = action.payload;
+      return updateState;
     default:
       return state;
   }

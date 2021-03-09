@@ -11,6 +11,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import DrawingPageContainer from "./components/DrawingPageContainer";
 import ProfilePageContainer from "./components/ProfilePageContainer";
 import CreatePageContainer from "./components/CreatePageContainer";
+import HomePageContainer from "./components/HomePageContainer";
 import { authenticate } from "./services/auth";
 
 function App() {
@@ -56,7 +57,7 @@ function App() {
           <ProfilePageContainer />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <h1>My Home Page</h1>
+          <HomePageContainer />
         </ProtectedRoute>
         <ProtectedRoute path="/create" exact={true} authenticated={authenticated}>
           <CreatePageContainer />
