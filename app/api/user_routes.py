@@ -51,3 +51,13 @@ def unfollow_user():
     db.session.commit()
 
     return followed.to_dict()
+
+
+@user_routes.route("/following/<int:id>")
+@login_required
+def show_followed_users(id):
+    user = User.query.get(id)
+
+    print(user.follows)
+
+    return user.to_dict()
