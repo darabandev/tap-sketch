@@ -65,3 +65,11 @@ def show_followed_users(id):
         following)).order_by(desc(Drawing.created_at)).all()
 
     return {"drawings": [drawing.to_dict() for drawing in drawings]}
+
+
+@user_routes.route("/image/<int:id>")
+@login_required
+def get_profile_img(id):
+    user = User.query.get(id)
+
+    return {"profile_img": user.profile_img}

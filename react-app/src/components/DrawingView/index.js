@@ -80,7 +80,9 @@ const DrawingView = ({ drawing }) => {
         </div>
         <p className="drawing-date">{dateConverter(drawing.created_at)}</p>
       </div>
-      <p>{`${drawing.likes} Likes`}</p>
+      <p>
+        {drawing.likes} {drawing.likes === 1 ? "Like" : "Likes"}
+      </p>
       <p>
         <Link style={{ textDecoration: "none" }} to={`/profile/${drawing.username}`}>
           <span className="drawing-username">{drawing.username}</span>

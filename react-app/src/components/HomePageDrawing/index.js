@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./HomePageDrawing.css";
 
 const HomePageDrawing = ({ drawing }) => {
+  const [profileImg, setProfileImg] = useState("https://i.imgur.com/5NakJ8y.png");
+
+  useEffect(() => {
+    const getProfileImage = async id => {
+      const res = await fetch(`/api/users/image/${id}`);
+      const data = await res.json();
+      setProfileImg(data.profile_img);
+    };
+
+    getProfileImage(drawing.user_id);
+  }, [drawing.user_id]);
+
   return (
     <div className="drawing-card">
       <div className="card-above-img-container">
         <Link to={`/profile/${drawing.username}`}>
-          <img className="card-profile-img" src="https://i.imgur.com/xAcplDO.jpg" alt="profile" />
+          <img className="card-profile-img" src={profileImg || "https://i.imgur.com/5NakJ8y.png"} alt="profile" />
         </Link>
         <Link to={`/profile/${drawing.username}`}>
           <p className="card-profile-username">{drawing.username}</p>
