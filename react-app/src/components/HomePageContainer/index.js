@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllFollowedUsers } from "../../store/users";
 import HomePageDrawing from "../HomePageDrawing";
 import UserSuggestions from "../UserSuggestions";
+import "./HomePageContainer.css";
 
 const HomePageContainer = () => {
   const sessionUser = useSelector(state => state.session.user);
@@ -35,8 +36,14 @@ const HomePageContainer = () => {
       {followedUsers.drawings.slice(...determineDrawingsToUse(pageNumber)).map(drawing => (
         <HomePageDrawing key={drawing.id} drawing={drawing} />
       ))}
-      {pageNumber > 1 && <Link to={`/page/${parseInt(pageNumber) - 1}`}>Previous</Link>}
-      {followedUsers.drawings.length > pageNumber * 10 && <Link to={`/page/${parseInt(pageNumber) + 1}`}>Next</Link>}
+      <div className="page-num-container">
+        <span>{pageNumber > 1 && <Link to={`/page/${parseInt(pageNumber) - 1}`}>Previous</Link>}</span>
+        <span>
+          {followedUsers.drawings.length > pageNumber * 10 && (
+            <Link to={`/page/${parseInt(pageNumber) + 1}`}>Next</Link>
+          )}
+        </span>
+      </div>
     </div>
   );
 };

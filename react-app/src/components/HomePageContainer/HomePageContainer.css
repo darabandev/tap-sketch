@@ -1,0 +1,9 @@
+.page-num-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.page-num-container span {
+  margin: 0 1em;
+}
