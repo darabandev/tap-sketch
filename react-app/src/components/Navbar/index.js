@@ -11,7 +11,7 @@ const Navbar = ({ setAuthenticated, authenticated }) => {
   return (
     <nav className="navbar">
       <li>
-        <NavLink to="/" exact={true} activeClassName="active">
+        <NavLink to="/page/1" exact={true} activeClassName="active">
           <img src={img} alt="logo" />
         </NavLink>
       </li>

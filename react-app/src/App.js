@@ -56,7 +56,7 @@ function App() {
         <ProtectedRoute path="/profile/:username" exact={true} authenticated={authenticated}>
           <ProfilePageContainer />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+        <ProtectedRoute path="/page/:pageNumber" exact={true} authenticated={authenticated}>
           <HomePageContainer />
         </ProtectedRoute>
         <ProtectedRoute path="/create" exact={true} authenticated={authenticated}>
