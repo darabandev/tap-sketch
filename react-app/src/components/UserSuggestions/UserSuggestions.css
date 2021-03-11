@@ -1,0 +1,7 @@
+.user-suggestions {
+  text-align: center;
+}
+
+.user-suggestions * {
+  margin-bottom: 1em;
+}
