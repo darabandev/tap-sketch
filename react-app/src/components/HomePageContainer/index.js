@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllFollowedUsers } from "../../store/users";
 import HomePageDrawing from "../HomePageDrawing";
+import UserSuggestions from "../UserSuggestions";
 
 const HomePageContainer = () => {
   const sessionUser = useSelector(state => state.session.user);
@@ -23,6 +24,7 @@ const HomePageContainer = () => {
 
   return (
     <div className="main">
+      {followedUsers.drawings.length === 0 && <UserSuggestions />}
       {followedUsers.drawings.map(drawing => (
         <HomePageDrawing key={drawing.id} drawing={drawing} />
       ))}
