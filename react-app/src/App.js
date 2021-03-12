@@ -13,6 +13,7 @@ import ProfilePageContainer from "./components/ProfilePageContainer";
 import CreatePageContainer from "./components/CreatePageContainer";
 import HomePageContainer from "./components/HomePageContainer";
 import { authenticate } from "./services/auth";
+import SplashPageContainer from "./components/SplashPageContainer";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -39,10 +40,12 @@ function App() {
       <Navbar setAuthenticated={setAuthenticated} authenticated={authenticated} />
       <Switch>
         <Route path="/login" exact={true}>
-          <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          <SplashPageContainer authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          {/* <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} /> */}
         </Route>
         <Route path="/sign-up" exact={true}>
-          <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          <SplashPageContainer authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          {/* <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} /> */}
         </Route>
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
           <UsersList />
