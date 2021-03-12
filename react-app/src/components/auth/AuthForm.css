@@ -1,0 +1,36 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form p {
+  margin-bottom: 0.7em;
+}
+
+.auth-form div {
+  margin-bottom: 1em;
+  width: 15em;
+}
+
+.auth-form input {
+  width: 100%;
+  height: 3em;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding-left: 0.3em;
+}
+
+.auth-form button {
+  font-size: 1.1em;
+  padding: 1em;
+  background: linear-gradient(270deg, rgba(255, 119, 0, 1) 19%, rgba(49, 203, 37, 1) 100%);
+  border: 1px solid white;
+  color: white;
+  border-radius: 0.3em;
+  transition: 0.2s all;
+}
+
+.auth-form button:hover {
+  border-radius: 1.6em;
+}

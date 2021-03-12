@@ -1,3 +1,25 @@
+.splash-container {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: white;
+  text-align: center;
+}
+
 .pic-form {
+  display: flex;
+}
+
+.auth-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-form-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.splash-card-container {
   display: flex;
 }

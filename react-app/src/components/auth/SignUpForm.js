@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { signUp } from "../../services/auth";
 import { setUser } from "../../store/session";
 import { useDispatch } from "react-redux";
+import "./AuthForm.css";
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [username, setUsername] = useState("");
@@ -43,27 +44,31 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <form onSubmit={onSignUp} className="auth-form">
+      <p>Let's get started!</p>
       <div>
-        <label>User Name</label>
-        <input type="text" name="username" onChange={updateUsername} value={username}></input>
+        <input type="text" name="username" onChange={updateUsername} value={username} placeholder="Username"></input>
       </div>
       <div>
-        <label>Email</label>
-        <input type="text" name="email" onChange={updateEmail} value={email}></input>
+        <input type="text" name="email" onChange={updateEmail} value={email} placeholder="Email"></input>
       </div>
       <div>
-        <label>Password</label>
-        <input type="password" name="password" onChange={updatePassword} value={password}></input>
+        <input
+          type="password"
+          name="password"
+          onChange={updatePassword}
+          value={password}
+          placeholder="Password"
+        ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
         <input
           type="password"
           name="repeat_password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
+          placeholder="Confirm Password"
         ></input>
       </div>
       <button type="submit">Sign Up</button>

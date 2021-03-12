@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
 import { setUser } from "../../store/session";
+import "./AuthForm.css";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const dispatch = useDispatch();
@@ -34,21 +35,19 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <form onSubmit={onLogin} className="auth-form">
       <div>
         {errors.map(error => (
           <div>{error}</div>
         ))}
       </div>
       <div>
-        <label htmlFor="email">Email</label>
         <input name="email" type="text" placeholder="Email" value={email} onChange={updateEmail} />
       </div>
       <div>
-        <label htmlFor="password">Password</label>
         <input name="password" type="password" placeholder="Password" value={password} onChange={updatePassword} />
-        <button type="submit">Login</button>
       </div>
+      <button type="submit">Login</button>
     </form>
   );
 };
