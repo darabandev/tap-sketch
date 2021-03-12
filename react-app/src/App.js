@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import User from "./components/User";
 import { setUser } from "./store/session";
 import { useDispatch } from "react-redux";
@@ -60,6 +60,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/create" exact={true} authenticated={authenticated}>
           <CreatePageContainer />
+        </ProtectedRoute>
+        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+          {authenticated ? <Redirect to="/page/1" /> : <Redirect to="/login" />}
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
