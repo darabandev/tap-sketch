@@ -22,9 +22,9 @@ const SplashPageContainer = ({ authenticated, setAuthenticated, authType }) => {
         </div>
       </div>
       <div className="splash-card-container">
-        <SplashInfoCard />
-        <SplashInfoCard />
-        <SplashInfoCard />
+        <SplashInfoCard infoCode="a" />
+        <SplashInfoCard infoCode="b" />
+        <SplashInfoCard infoCode="c" />
       </div>
     </div>
   );

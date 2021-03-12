@@ -22,4 +22,9 @@
 
 .splash-card-container {
   display: flex;
+  justify-content: space-around;
+}
+
+.splash-card-container div {
+  width: 32%;
 }
