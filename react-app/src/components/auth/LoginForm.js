@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
 import { setUser } from "../../store/session";
 import "./AuthForm.css";
@@ -36,6 +36,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   return (
     <form onSubmit={onLogin} className="auth-form">
+      <p>Welcome back!</p>
       <div>
         {errors.map(error => (
           <div>{error}</div>
@@ -48,6 +49,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         <input name="password" type="password" placeholder="Password" value={password} onChange={updatePassword} />
       </div>
       <button type="submit">Login</button>
+      <p className="login-switch-text">Don't have an account?</p>
+      <Link to="/sign-up">Sign up here.</Link>
     </form>
   );
 };

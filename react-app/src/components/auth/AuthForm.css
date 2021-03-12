@@ -30,6 +30,7 @@
   border-radius: 0.3em;
   transition: 0.2s all;
   outline: none;
+  margin-bottom: 0.5em;
 }
 
 .auth-form button:hover {
@@ -38,4 +39,16 @@
 
 .auth-form button:active {
   transform: translateY(0.2em);
+}
+
+.login-switch-text {
+  margin: 0;
+}
+
+.auth-form a {
+  color: white;
+}
+
+.auth-form a:hover {
+  font-weight: bold;
 }

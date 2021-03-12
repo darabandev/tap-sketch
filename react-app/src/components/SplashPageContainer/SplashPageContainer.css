@@ -1,11 +1,17 @@
 .splash-container {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0);
   color: white;
   text-align: center;
 }
 
+.splash-container h1 {
+  font-family: "Baloo Tamma 2", "Montserrat", Verdana, "Segoe UI", Tahoma, Geneva, sans-serif;
+  font-size: 4em;
+}
+
 .pic-form {
   display: flex;
+  margin-bottom: 1em;
 }
 
 .auth-form-container {

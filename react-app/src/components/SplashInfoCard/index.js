@@ -1,4 +1,5 @@
 import React from "react";
+import "./SplashInfoCard.css";
 
 const SplashInfoCard = ({ infoCode }) => {
   // each info card displays unique info but isn't stored in a DB
@@ -9,20 +10,20 @@ const SplashInfoCard = ({ infoCode }) => {
       case "a":
         return {
           icon: "fas fa-image",
-          tagline: "See what people are making.",
-          text: "Follow users to stay current with their latest artworks.",
+          tagline: "See what everyone's up to.",
+          text: "Follow users to stay current with their latest artworks!",
         };
       case "b":
         return {
           icon: "fas fa-palette",
           tagline: "Create your own art.",
-          text: "I said you can look at pics, bro.",
+          text: "Use the built-in canvas to bring your ideas to life!",
         };
       case "c":
         return {
           icon: "fas fa-users",
           tagline: "Share with your friends.",
-          text: "I said you can look at pics, bro.",
+          text: "Post your creations online for your friends to like and comment!",
         };
       default:
         return {};
@@ -30,7 +31,7 @@ const SplashInfoCard = ({ infoCode }) => {
   };
 
   return (
-    <div>
+    <div className="splash-card">
       <i className={infoObject(infoCode).icon}></i>
       <h3>{infoObject(infoCode).tagline}</h3>
       <p>{infoObject(infoCode).text}</p>
