@@ -10,7 +10,9 @@ const SplashPageContainer = ({ authenticated, setAuthenticated, authType }) => {
     <div className="main splash-container">
       <h1>Draw Up Some Fun!</h1>
       <div className="pic-form">
-        <img src={painter} alt="painter" />
+        <div>
+          <img src={painter} alt="painter" />
+        </div>
         <div className="auth-form-container">
           {authType === "login" ? (
             <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
