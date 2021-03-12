@@ -5,8 +5,6 @@ import { setUser } from "./store/session";
 import { useDispatch } from "react-redux";
 import Navbar from "./components/Navbar/index";
 import UsersList from "./components/UsersList";
-import LoginForm from "./components/auth/LoginForm";
-import SignUpForm from "./components/auth/SignUpForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import DrawingPageContainer from "./components/DrawingPageContainer";
 import ProfilePageContainer from "./components/ProfilePageContainer";
@@ -40,12 +38,10 @@ function App() {
       <Navbar setAuthenticated={setAuthenticated} authenticated={authenticated} />
       <Switch>
         <Route path="/login" exact={true}>
-          <SplashPageContainer authenticated={authenticated} setAuthenticated={setAuthenticated} />
-          {/* <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} /> */}
+          <SplashPageContainer authType={"login"} authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
         <Route path="/sign-up" exact={true}>
-          <SplashPageContainer authenticated={authenticated} setAuthenticated={setAuthenticated} />
-          {/* <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} /> */}
+          <SplashPageContainer authType={"signup"} authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
           <UsersList />
