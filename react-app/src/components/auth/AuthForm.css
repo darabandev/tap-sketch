@@ -52,3 +52,17 @@
 .auth-form a:hover {
   font-weight: bold;
 }
+
+.logout-btn {
+  text-decoration: none;
+  border: 1px solid #ffa500;
+  padding: 0.7em 1em;
+  color: #ffa500;
+  border-radius: 5px;
+  transition: 0.2s all;
+  background-color: transparent;
+}
+
+.logout-btn:hover {
+  box-shadow: 0 0 5px 2px #ffa500;
+}
