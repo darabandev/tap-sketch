@@ -18,28 +18,35 @@ const Navbar = ({ setAuthenticated, authenticated }) => {
       {authenticated ? (
         <>
           <li>
-            <NavLink to={user && `/profile/${user.username}`} exact={true} activeClassName="active">
-              My Profile
-            </NavLink>
-          </li>
-          <li>
             <NavLink to="/create" exact={true} activeClassName="active">
               Create
             </NavLink>
           </li>
-          <li>
-            <LogoutButton setAuthenticated={setAuthenticated} />
-          </li>
+          <div className="profile-btn-container">
+            <li>
+              <NavLink
+                to={user && `/profile/${user.username}`}
+                className="green-btn"
+                exact={true}
+                activeClassName="active"
+              >
+                My Profile
+              </NavLink>
+            </li>
+            <li>
+              <LogoutButton setAuthenticated={setAuthenticated} className="orange-btn" />
+            </li>
+          </div>
         </>
       ) : (
         <div className="login-btn-container">
           <li>
-            <NavLink to="/login" exact={true} className="login-btn" activeClassName="active">
+            <NavLink to="/login" exact={true} className="orange-btn" activeClassName="active">
               Login
             </NavLink>
           </li>
           <li>
-            <NavLink to="/sign-up" exact={true} className="signup-btn" activeClassName="active">
+            <NavLink to="/sign-up" exact={true} className="green-btn" activeClassName="active">
               Sign Up
             </NavLink>
           </li>

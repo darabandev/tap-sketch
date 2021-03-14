@@ -20,12 +20,13 @@
   overflow: hidden;
 }
 
-.login-btn-container {
+.login-btn-container,
+.profile-btn-container {
   display: flex;
   gap: 1em;
 }
 
-.login-btn {
+.orange-btn {
   text-decoration: none;
   border: 1px solid #ffa500;
   padding: 0.6em 1em;
@@ -34,11 +35,11 @@
   transition: 0.2s all;
 }
 
-.login-btn:hover {
+.orange-btn:hover {
   box-shadow: 0 0 5px 2px #ffa500;
 }
 
-.signup-btn {
+.green-btn {
   text-decoration: none;
   padding: 0.6em 1em;
   color: white;
@@ -47,6 +48,6 @@
   transition: 0.2s all;
 }
 
-.signup-btn:hover {
+.green-btn:hover {
   box-shadow: 0 0 5px 2px #54e317;
 }
