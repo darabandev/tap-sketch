@@ -61,8 +61,8 @@ def show_followed_users(id):
 
     following = [user.id for user in user.follows]
 
-    drawings = Drawing.query.filter(Drawing.user_id.in_(
-        following)).order_by(desc(Drawing.created_at)).limit(100).all()
+    drawings = Drawing.query.filter(Drawing.user_id.in_(following)).order_by(
+        desc(Drawing.created_at)).limit(100).all()
 
     return {"drawings": [drawing.to_dict() for drawing in drawings]}
 
