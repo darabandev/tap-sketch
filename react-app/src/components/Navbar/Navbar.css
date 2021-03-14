@@ -5,10 +5,16 @@
   align-items: center;
   height: 4em;
   background-color: white;
+  padding-right: 1em;
 }
 
 .navbar li {
   list-style-type: none;
+}
+
+.login-btn-container {
+  display: flex;
+  gap: 1em;
 }
 
 .navbar img {

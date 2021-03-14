@@ -32,18 +32,18 @@ const Navbar = ({ setAuthenticated, authenticated }) => {
           </li>
         </>
       ) : (
-        <>
+        <div className="login-btn-container">
           <li>
-            <NavLink to="/login" exact={true} activeClassName="active">
+            <NavLink to="/login" exact={true} className="login-btn" activeClassName="active">
               Login
             </NavLink>
           </li>
           <li>
-            <NavLink to="/sign-up" exact={true} activeClassName="active">
+            <NavLink to="/sign-up" exact={true} className="signup-btn" activeClassName="active">
               Sign Up
             </NavLink>
           </li>
-        </>
+        </div>
       )}
     </nav>
   );
