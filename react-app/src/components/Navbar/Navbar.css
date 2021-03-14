@@ -52,3 +52,40 @@
 .green-btn:hover {
   box-shadow: 0 0 5px 2px #54e317;
 }
+
+.rainbow {
+  background-color: #ffa500;
+  border-radius: 5px;
+  color: white;
+  padding: 1em 2em;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.rainbow:hover {
+  background-image: linear-gradient(
+    to right,
+    #e7484f,
+    #e7484e 16.65%,
+    #f68b2d 16.65%,
+    #f68b1d 33.3%,
+    #fced10 33.3%,
+    #fced00 49.95%,
+    #009e4e 49.95%,
+    #009e5f 66.6%,
+    #00aab3 66.6%,
+    #00aac3 83.25%,
+    #732984 83.25%,
+    #732982 100%,
+    #e7484e 100%
+  );
+  animation: slide 2s linear infinite;
+}
+
+@keyframes slide {
+  to {
+    background-position: 20vw;
+  }
+}
