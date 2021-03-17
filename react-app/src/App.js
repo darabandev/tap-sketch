@@ -12,6 +12,7 @@ import CreatePageContainer from "./components/CreatePageContainer";
 import HomePageContainer from "./components/HomePageContainer";
 import { authenticate } from "./services/auth";
 import SplashPageContainer from "./components/SplashPageContainer";
+import ContactMe from "./components/ContactMe";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -36,6 +37,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar setAuthenticated={setAuthenticated} authenticated={authenticated} />
+      <ContactMe />
       <Switch>
         <Route path="/login" exact={true}>
           <SplashPageContainer authType={"login"} authenticated={authenticated} setAuthenticated={setAuthenticated} />

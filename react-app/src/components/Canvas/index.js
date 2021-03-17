@@ -91,6 +91,12 @@ const Canvas = () => {
     }
   };
 
+  const undo = () => {
+    console.log("BEFORE", paths);
+    paths.pop();
+    console.log("AFTER", paths);
+  };
+
   return (
     <div className="canvas-tools-container">
       <div className="canvas-draw-tools">
@@ -101,6 +107,9 @@ const Canvas = () => {
         <div>
           <input type="range" min="1" max="100" value={lineWeight} onChange={e => setLineWeight(e.target.value)} />
           <p>Thickness</p>
+        </div>
+        <div>
+          <button onClick={undo}>Undo</button>
         </div>
       </div>
       <Sketch setup={setup} draw={draw} mousePressed={mousePressed} windowResized={windowResized} />
