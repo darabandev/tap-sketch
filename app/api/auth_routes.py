@@ -69,6 +69,7 @@ def sign_up():
             password=form.data['password']
         )
         db.session.add(user)
+        user.followers.append(user)
         db.session.commit()
         login_user(user)
         return user.to_dict()
