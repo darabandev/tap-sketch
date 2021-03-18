@@ -13,6 +13,7 @@ const Canvas = () => {
   const [lineColor, setLineColor] = useState("#000000");
   const [lineWeight, setLineWeight] = useState(10);
   const [caption, setCaption] = useState("");
+  const [pencilEraser, setPencilEraser] = useState("pencil");
   const paths = [];
   let currentPath = [];
 
@@ -47,9 +48,15 @@ const Canvas = () => {
       const point = {
         x: p5.mouseX,
         y: p5.mouseY,
-        color: lineColor,
-        weight: lineWeight,
       };
+
+      if (pencilEraser === "pencil") {
+        point.color = lineColor;
+        point.weight = lineWeight;
+      } else {
+        point.color = "#fff";
+        point.weight = 30;
+      }
       currentPath.push(point);
     }
 
@@ -91,25 +98,32 @@ const Canvas = () => {
     }
   };
 
-  const undo = () => {
-    console.log("BEFORE", paths);
-    paths.pop();
-    console.log("AFTER", paths);
-  };
-
   return (
     <div className="canvas-tools-container">
       <div className="canvas-draw-tools">
         <div>
-          <input type="color" onChange={e => setLineColor(e.target.value)} value={lineColor} />
+          <input
+            type="color"
+            onChange={e => setLineColor(e.target.value)}
+            value={lineColor}
+            disabled={pencilEraser === "eraser"}
+          />
           <p>Color</p>
         </div>
         <div>
-          <input type="range" min="1" max="100" value={lineWeight} onChange={e => setLineWeight(e.target.value)} />
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value={lineWeight}
+            onChange={e => setLineWeight(e.target.value)}
+            disabled={pencilEraser === "eraser"}
+          />
           <p>Thickness</p>
         </div>
         <div>
-          <button onClick={undo}>Undo</button>
+          <button onClick={() => setPencilEraser("eraser")}>Eraser</button>
+          <button onClick={() => setPencilEraser("pencil")}>Pencil</button>
         </div>
       </div>
       <Sketch setup={setup} draw={draw} mousePressed={mousePressed} windowResized={windowResized} />
