@@ -6,12 +6,12 @@ const ContactMe = () => {
   return (
     <div className="contact-me">
       <span>About the Creator: </span>
-      <Link to="https://www.linkedin.com/in/robertdaraban/">
+      <a target="_blank" href="https://www.linkedin.com/in/robertdaraban/">
         <i class="fab fa-linkedin"></i>
-      </Link>
-      <Link to="https://github.com/darabandev">
+      </a>
+      <a target="_blank" href="https://github.com/darabandev">
         <i class="fab fa-github"></i>
-      </Link>
+      </a>
     </div>
   );
 };
