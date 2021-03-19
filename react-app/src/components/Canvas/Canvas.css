@@ -4,6 +4,7 @@
 
 .canvas-draw-tools {
   display: flex;
+  align-items: center;
 }
 
 .canvas-draw-tools div {
@@ -15,6 +16,30 @@
 
 .canvas-draw-tools div input {
   width: 100%;
+}
+
+#pencil-eraser {
+  flex-grow: 0;
+}
+
+#pencil-eraser button {
+  margin: 0 0.3em;
+  padding: 0.3em;
+  background-color: transparent;
+  border: 1px solid #ffa500;
+  color: #ffa500;
+  border-radius: 5px;
+  outline: none;
+  transition: 0.1s all;
+}
+
+#pencil-eraser button:hover {
+  box-shadow: 0 0 5px #ffa500;
+  cursor: pointer;
+}
+
+#pencil-eraser button i {
+  font-size: 1.2em;
 }
 
 .canvas-upload-tools {

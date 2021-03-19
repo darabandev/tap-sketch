@@ -57,6 +57,7 @@ const Canvas = () => {
         point.color = "#fff";
         point.weight = 30;
       }
+
       currentPath.push(point);
     }
 
@@ -121,9 +122,13 @@ const Canvas = () => {
           />
           <p>Thickness</p>
         </div>
-        <div>
-          <button onClick={() => setPencilEraser("eraser")}>Eraser</button>
-          <button onClick={() => setPencilEraser("pencil")}>Pencil</button>
+        <div id="pencil-eraser">
+          <button onClick={() => setPencilEraser("eraser")}>
+            <i class="fas fa-eraser"></i> Erase
+          </button>
+          <button onClick={() => setPencilEraser("pencil")}>
+            <i class="fas fa-pencil-alt"></i> Draw
+          </button>
         </div>
       </div>
       <Sketch setup={setup} draw={draw} mousePressed={mousePressed} windowResized={windowResized} />
