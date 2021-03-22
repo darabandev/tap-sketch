@@ -73,9 +73,12 @@ const DrawingView = ({ drawing }) => {
             <i className="far fa-comment"></i>
           </button>
           {drawing.user_id === sessionUser.id && (
-            <button className="drawing-profile-btn" onClick={updateProfileImage}>
-              Set Profile Image
-            </button>
+            <>
+              <button className="drawing-profile-btn" onClick={updateProfileImage}>
+                Set Profile Image
+              </button>
+              <button className="drawing-profile-btn">Delete</button>
+            </>
           )}
         </div>
         <p className="drawing-date">{dateConverter(drawing.created_at)}</p>
