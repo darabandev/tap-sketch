@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import dateConverter from "../../services/dateConverter";
-import { likeOneDrawing, unlikeOneDrawing } from "../../store/drawings";
+import { likeOneDrawing, unlikeOneDrawing, deleteOneDrawing } from "../../store/drawings";
 import { getCommentsForDrawing } from "../../store/comments";
 import CommentInput from "../CommentInput";
 import CommentDisplay from "../CommentDisplay";
@@ -11,6 +11,7 @@ import "./DrawingView.css";
 const DrawingView = ({ drawing }) => {
   const comments = useSelector(state => state.comments);
   const sessionUser = useSelector(state => state.session.user);
+  const history = useHistory();
   const dispatch = useDispatch();
   const { drawingId } = useParams();
   const [showCommentInput, setShowCommentInput] = useState(false);
@@ -38,6 +39,11 @@ const DrawingView = ({ drawing }) => {
         drawing_id: drawing.id,
       }),
     });
+  };
+
+  const handleDelete = () => {
+    dispatch(deleteOneDrawing({ userId: sessionUser.id, drawingId }));
+    history.push(`/profile/${sessionUser.username}`);
   };
 
   // allows user to "like" the drawing
@@ -77,7 +83,9 @@ const DrawingView = ({ drawing }) => {
               <button className="drawing-profile-btn" onClick={updateProfileImage}>
                 Set Profile Image
               </button>
-              <button className="drawing-profile-btn">Delete</button>
+              <button className="drawing-profile-btn" onClick={handleDelete}>
+                Delete
+              </button>
             </>
           )}
         </div>
