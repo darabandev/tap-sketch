@@ -9,6 +9,10 @@ const ProfileGallery = ({ drawings }) => {
         <div key={drawing.id} className="profile-drawing-item">
           <Link to={`/drawings/${drawing.id}`}>
             <img src={drawing.data_url} alt="drawing" />
+            <div className="middle">
+              <p>Likes {drawing.likes}</p>
+              <p>Comments {drawing.comments}</p>
+            </div>
           </Link>
         </div>
       ))}
