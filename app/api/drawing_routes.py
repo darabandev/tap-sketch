@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, Response
 from flask_login import login_required
-from app.models import User, Drawing, db
+from app.models import User, Drawing, Comment, db
 import json
 from sqlalchemy import desc
 
@@ -93,14 +93,17 @@ def unlike_an_image():
 @login_required
 def delete_drawing():
     request_obj = request.get_json()
+    user_id = request_obj["user_id"]
+    drawing_id = request_obj["drawing_id"]
 
-    user = User.query.get(request_obj["user_id"])
-    drawing = Drawing.query.get(request_obj["drawing_id"])
+    user = User.query.get(user_id)
+    drawing = Drawing.query.get(drawing_id)
 
+    Comment.query.filter(Comment.drawing_id == drawing_id).delete()
     db.session.delete(drawing)
     db.session.commit()
 
-    drawings = Drawing.query.filter(Drawing.user_id == request_obj["user_id"]).order_by(
+    drawings = Drawing.query.filter(Drawing.user_id == user_id).order_by(
         desc(Drawing.created_at)).all()
     data = [drawing.to_dict() for drawing in drawings]
 
