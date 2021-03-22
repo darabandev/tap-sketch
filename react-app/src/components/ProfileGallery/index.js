@@ -10,8 +10,12 @@ const ProfileGallery = ({ drawings }) => {
           <Link to={`/drawings/${drawing.id}`}>
             <img src={drawing.data_url} alt="drawing" />
             <div className="middle">
-              <p>Likes {drawing.likes}</p>
-              <p>Comments {drawing.comments}</p>
+              <p>
+                <i className="fas fa-heart"></i> {drawing.likes}
+              </p>
+              <p>
+                <i className="fas fa-comment"></i> {drawing.comments}
+              </p>
             </div>
           </Link>
         </div>
