@@ -40,20 +40,38 @@
   color: #ffa500;
 }
 
-.drawing-profile-btn {
-  border: 1px solid #54e317;
+.drawing-profile-btn,
+.drawing-delete-btn {
   background-color: transparent;
-  color: #54e317;
   padding: 0.3em 0.5em;
   border-radius: 5px;
   transition: 0.2s;
   font-size: 1em;
+  margin: 0 0.3em;
+}
+
+.drawing-profile-btn {
+  border: 1px solid #54e317;
+  color: #54e317;
+}
+
+.drawing-delete-btn {
+  border: 1px solid rgb(214, 26, 26);
+  color: rgb(214, 26, 26);
+}
+
+.drawing-profile-btn:hover,
+.drawing-delete-btn:hover {
+  color: white;
+  cursor: pointer;
 }
 
 .drawing-profile-btn:hover {
   background-color: #54e317;
-  color: white;
-  cursor: pointer;
+}
+
+.drawing-delete-btn:hover {
+  background-color: rgb(214, 26, 26);
 }
 
 @media screen and (max-width: 1000px) {

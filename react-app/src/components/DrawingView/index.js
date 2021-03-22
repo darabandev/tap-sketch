@@ -83,7 +83,7 @@ const DrawingView = ({ drawing }) => {
               <button className="drawing-profile-btn" onClick={updateProfileImage}>
                 Set Profile Image
               </button>
-              <button className="drawing-profile-btn" onClick={handleDelete}>
+              <button className="drawing-delete-btn" onClick={handleDelete}>
                 Delete
               </button>
             </>
