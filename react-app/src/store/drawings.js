@@ -95,6 +95,24 @@ export const unlikeOneDrawing = unlikeObj => async dispatch => {
   dispatch(getDrawing(data));
 };
 
+export const deleteOneDrawing = deleteObj => async dispatch => {
+  const { userId, drawingId } = deleteObj;
+
+  const res = await fetch(`/api/drawings/delete`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      drawing_id: drawingId,
+    }),
+  });
+
+  const data = await res.json();
+  dispatch(getUserDrawings(data));
+};
+
 const initialState = { currentDrawing: null, userDrawings: null, userViewing: null };
 
 export default function drawingReducer(state = initialState, action) {
