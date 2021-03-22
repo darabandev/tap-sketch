@@ -99,3 +99,9 @@ def delete_drawing():
 
     db.session.delete(drawing)
     db.session.commit()
+
+    drawings = Drawing.query.filter(Drawing.user_id == request_obj["user_id"]).order_by(
+        desc(Drawing.created_at)).all()
+    data = [drawing.to_dict() for drawing in drawings]
+
+    return json.dumps(data, default=str)
