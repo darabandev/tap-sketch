@@ -87,3 +87,15 @@ def unlike_an_image():
     db.session.commit()
 
     return drawing.to_dict()
+
+
+@drawing_routes.route("/delete", methods=["DELETE"])
+@login_required
+def delete_drawing():
+    request_obj = request.get_json()
+
+    user = User.query.get(request_obj["user_id"])
+    drawing = Drawing.query.get(request_obj["drawing_id"])
+
+    db.session.delete(drawing)
+    db.session.commit()
