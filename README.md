@@ -6,15 +6,21 @@ Tap Sketch is a full stack web application where budding artists can come togeth
 
 Users can tap into a fully interactive HTML Canvas element to create their very own artworks from scratch!
 
-<img src="canvas.gif" width="600">
+<p align="center">
+   <img src="canvas.gif" width="600">
+</p>
 
 Users can head over to their friends' profile pages and begin following one another to keep track of one another's latest artworks!
 
-<img src="follow.gif" width="600">
+<p align="center">
+   <img src="follow.gif" width="600">
+</p>
 
 Once users have built up a good selection of artists to follow, they can head over to their home page to get a feed of their followed users' latest artworks.
 
-<img src="homepage.gif" width="600">
+<p align="center">
+   <img src="homepage.gif" width="600">
+</p>
 
 ## Installing this App
 
