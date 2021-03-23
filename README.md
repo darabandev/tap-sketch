@@ -1,10 +1,10 @@
-# Flask React Project
+# Tap Sketch
 
-This is the backend for the Flask React project.
+Tap Sketch is a full stack web application for budding artists to come together, create their own simple artworks, and share them with the community!
 
 ## Getting started
 
-1. Clone this repository (only this branch)
+1. Clone this repository
 
    ```bash
    git clone https://github.com/appacademy-starters/python-project-starter.git
