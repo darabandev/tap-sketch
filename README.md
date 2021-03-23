@@ -8,7 +8,15 @@ Users can tap into a fully interactive HTML Canvas element to create their very 
 
 <img src="canvas.gif" width="600">
 
-## Getting started
+Users can head over to their friends' profile pages and begin following one another to keep track of one another's latest artworks!
+
+<img src="follow.gif" width="600">
+
+Once users have built up a good selection of artists to follow, they can head over to their home page to get a feed of their followed users' latest artworks.
+
+<img src="homepage.gif" width="600">
+
+## Installing this App
 
 1. Clone this repository
 
