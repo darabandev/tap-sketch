@@ -1,6 +1,12 @@
 # Tap Sketch
 
-Tap Sketch is a full stack web application for budding artists to come together, create their own simple artworks, and share them with the community!
+Tap Sketch is a full stack web application where budding artists can come together, create their own simple artworks, and share them with the community!
+
+## Features
+
+Users can tap into a fully interactive HTML Canvas element to create their very own artworks from scratch!
+
+<img src="canvas.gif" width="600">
 
 ## Getting started
 
