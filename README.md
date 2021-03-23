@@ -89,7 +89,10 @@ There is a layer in the Dockerfile that will install psycopg2 (not binary) for u
 
 6. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
    This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-7. Push your docker container to heroku from the root directory of your project.
+
+7. If you're running WSL1, scroll to the bottom of this readme for proper steps.
+
+   Push your docker container to heroku from the root directory of your project.
    This will build the dockerfile and push the image to your heroku container registry
 
    ```bash
