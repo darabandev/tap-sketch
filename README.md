@@ -2,6 +2,8 @@
 
 Tap Sketch is a full stack web application where budding artists can come together, create their own simple artworks, and share them with the community!
 
+To see it in action, please click [here](http://tap-sketch.herokuapp.com/)!
+
 ## Features
 
 Users can tap into a fully interactive HTML Canvas element to create their very own artworks from scratch!
