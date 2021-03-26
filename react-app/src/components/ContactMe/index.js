@@ -6,10 +6,10 @@ const ContactMe = () => {
     <div className="contact-me">
       <span>About the Creator: </span>
       <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/robertdaraban/">
-        <i class="fab fa-linkedin"></i>
+        <i className="fab fa-linkedin"></i>
       </a>
       <a target="_blank" rel="noopener noreferrer" href="https://github.com/darabandev">
-        <i class="fab fa-github"></i>
+        <i className="fab fa-github"></i>
       </a>
     </div>
   );

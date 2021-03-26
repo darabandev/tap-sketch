@@ -124,10 +124,10 @@ const Canvas = () => {
         </div>
         <div id="pencil-eraser">
           <button onClick={() => setPencilEraser("eraser")}>
-            <i class="fas fa-eraser"></i> Erase
+            <i className="fas fa-eraser"></i> Erase
           </button>
           <button onClick={() => setPencilEraser("pencil")}>
-            <i class="fas fa-pencil-alt"></i> Draw
+            <i className="fas fa-pencil-alt"></i> Draw
           </button>
         </div>
       </div>
