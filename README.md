@@ -29,7 +29,7 @@ Once users have built up a good selection of artists to follow, they can head ov
 1. Clone this repository
 
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   git clone https://github.com/darabandev/tap-sketch.git
    ```
 
 2. Install dependencies
